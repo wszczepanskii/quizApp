@@ -144,10 +144,15 @@ const handleStart = () => {
 	questionsBox.classList.add("fade-out-anim");
 };
 
+console.log(...questionsBox.children);
 const removeContent = () => {
-	while (questionsBox.firstChild) {
-		questionsBox.removeChild(questionsBox.lastChild);
-	}
+	// while (questionsBox.firstChild) {
+	// 	questionsBox.removeChild(questionsBox.lastChild);
+	// }
+
+	[...questionsBox.children].forEach((child) =>
+		child !== contactForm ? questionsBox.removeChild(child) : null
+	);
 
 	if (leftSection !== undefined && rightSection !== undefined) {
 		while (leftSection.firstChild && rightSection.firstChild) {
@@ -186,6 +191,7 @@ const showQuestion = (idx) => {
 	rightSection.classList.add("section", "section-right");
 
 	questionsBox.append(leftSection, rightSection);
+	questionsBox.style.display = "flex";
 	questionsBox.style.flexDirection = "row";
 	questionsBox.style.justifyContent = "center";
 
@@ -288,6 +294,10 @@ const showForm = () => {
 	skipBtn.style.display = "none";
 	questionName.textContent = "Twoje dane kontaktowe";
 
+	questionsBox.style.display = "block";
+
+	contactForm.classList.add("contact-form-active");
+
 	infoFromUser = textArea.value;
 };
 
@@ -331,6 +341,7 @@ nextBtn.addEventListener("click", () => {
 });
 
 prevBtn.addEventListener("click", () => {
+	contactForm.classList.remove("contact-form-active");
 	if (currentQuestionIndex > 0 && currentQuestionIndex <= 11) {
 		currentQuestionIndex--;
 		showQuestion(currentQuestionIndex);
