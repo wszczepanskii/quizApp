@@ -22,34 +22,238 @@ body {
 }
 
 .main {
+	position: relative;
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
 	align-items: center;
 	height: 100vh;
 	width: 100vw;
+
+	.question-name-box {
+		display: none;
+		margin-bottom: 70px;
+
+		&__options {
+			display: none;
+			text-align: center;
+			margin-top: 10px;
+		}
+
+		&__h1 {
+			text-align: center;
+		}
+	}
+
+	.progress-bar {
+		position: absolute;
+		align-self: flex-start;
+		display: none;
+	}
 
 	.wrapper {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
+		height: 442px;
 		width: 70%;
 
-		.start-btn {
-			padding: 11px 54px;
-			margin-top: 33px;
-			background-color: c.$vsh-blue;
-			color: white;
-			font-size: 2.2rem;
-			border-radius: 100px;
-			border: 2px solid c.$vsh-blue;
-			cursor: pointer;
+		.questions-box {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			height: 100%;
+			width: 100%;
 
-			&:hover {
-				background-color: white;
-				color: c.$vsh-blue;
+			.section {
+				display: flex;
+				justify-content: center;
+
+				flex-direction: column;
+				width: 100%;
+				height: 100%;
+
+				.answer-btn {
+					width: 100%;
+					margin-bottom: 36px;
+					padding: 12px 0;
+					max-width: 65%;
+					font-size: 2rem;
+					border: 2px solid c.$vsh-darkgrey;
+					border-radius: 5px;
+					background-color: #fff;
+					cursor: pointer;
+
+					i {
+						position: relative;
+						left: 0;
+					}
+				}
+
+				.hover {
+					&:hover {
+						background-color: #ededed;
+					}
+				}
+
+				.active-btn {
+					background-color: c.$vsh-blue;
+					color: white;
+				}
+
+				.left-btn {
+					margin-right: 18px;
+				}
+
+				.right-btn {
+					margin-left: 18px;
+				}
+			}
+
+			.section-left {
+				align-items: flex-end;
+			}
+
+			.section-right {
+				align-items: flex-start;
+			}
+
+			.start-btn {
+				padding: 11px 54px;
+				margin-top: 70px;
+				background-color: c.$vsh-blue;
+				color: white;
+				font-size: 2.2rem;
+				border-radius: 100px;
+				border: 2px solid c.$vsh-blue;
+				cursor: pointer;
+
+				&:hover {
+					background-color: white;
+					color: c.$vsh-blue;
+				}
+			}
+
+			.box {
+				opacity: 1;
+				z-index: 1000;
+				color: black;
+			}
+
+			.text-area {
+				width: 90%;
+				height: 70%;
+				padding-left: 15px;
+				padding-top: 15px;
+				resize: none;
+				font-size: 2rem;
+
+				&::placeholder {
+					font-family: "Montserrat", sans-serif;
+					font-size: 2rem;
+				}
 			}
 		}
+
+		.buttons {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 100%;
+
+			.state-btn {
+				display: none;
+				padding: 11px 54px;
+				border-radius: 100px;
+				font-size: 2.2rem;
+				font-weight: 600;
+				cursor: pointer;
+			}
+
+			&__next {
+				margin-right: 16%;
+				border: 2px solid c.$vsh-blue;
+				background-color: c.$vsh-blue;
+				color: white;
+
+				&:hover {
+					color: c.$vsh-blue;
+					background-color: white;
+				}
+			}
+
+			&__next:disabled {
+				border: 2px solid #999999;
+				background-color: #cccccc;
+				color: #666666;
+			}
+
+			&__prev {
+				margin-left: 16%;
+				background-color: white;
+				border: 2px solid c.$vsh-darkgrey;
+				color: c.$vsh-darkgrey;
+
+				cursor: pointer;
+
+				&:hover {
+					background-color: #ededed;
+				}
+			}
+
+			&__skip {
+				margin-right: 16%;
+				background-color: white;
+				border: 2px solid c.$vsh-darkgrey;
+				color: c.$vsh-darkgrey;
+
+				cursor: pointer;
+
+				&:hover {
+					background-color: #ededed;
+				}
+			}
+
+			&__send {
+				margin-right: 16%;
+				border: 2px solid c.$vsh-blue;
+				background-color: c.$vsh-blue;
+				color: white;
+
+				&:hover {
+					color: c.$vsh-blue;
+					background-color: white;
+				}
+			}
+		}
+	}
+}
+
+.fade-out-anim {
+	animation: fadeOut 0.3s;
+}
+
+.fade-in-anim {
+	animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
 	}
 }
 
