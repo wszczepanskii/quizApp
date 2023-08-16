@@ -14,14 +14,39 @@
 
 		<title>Quiz App</title>
 
+		<script
+			src="https://kit.fontawesome.com/22b2a63529.js"
+			crossorigin="anonymous"
+		></script>
+
 		<link rel="stylesheet" href="./css/style.css" />
 	</head>
 	<body>
 		<main class="main">
 			<div class="wrapper">
-				<h1 class="start-h1">Pomoc w wyborze aplikacji</h1>
-				<button class="start-btn">Rozpocznij quiz</button>
+				<div class="progress-bar">
+					<p class="questions-r">pozostało 13 pytań</p>
+				</div>
+				<div class="question-name-box">
+					<h1 class="question-name-box__h1">Jaki projekt chcesz stworzyć?</h1>
+					<p class="question-name-box__options">
+						Wybierz tyle opcji ile chcesz
+					</p>
+				</div>
+				<div class="questions-box">
+					<h1 class="start-h1">Pomoc w wyborze aplikacji</h1>
+					<button class="start-btn">Rozpocznij quiz</button>
+					<form class="contact-form"></form>
+				</div>
+				<div class="buttons">
+					<button class="buttons__prev state-btn">Cofnij</button>
+					<button class="buttons__next state-btn">Dalej</button>
+					<button class="buttons__skip state-btn">Pomiń</button>
+					<button class="buttons__send state-btn">Wyślij</button>
+				</div>
 			</div>
 		</main>
+
+		<script src="./js/script.js"></script>
 	</body>
 </html>
