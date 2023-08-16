@@ -338,7 +338,7 @@ prevBtn.addEventListener("click", () => {
 	console.log(userAnswers);
 
 	for (let i = 0; i < userAnswers.length; i++) {
-		if (userAnswers[i].includes(currentQuestionIndex.toString())) {
+		if (userAnswers[i].includes(`${currentQuestionIndex} `)) {
 			userAnswers.splice(i);
 		}
 	}
