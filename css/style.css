@@ -136,6 +136,43 @@ body {
   font-family: "Montserrat", sans-serif;
   font-size: 2rem;
 }
+.main .wrapper .questions-box .contact-form {
+  display: none;
+}
+.main .wrapper .questions-box .contact-form .right-form {
+  display: flex;
+  flex-direction: column;
+  margin-left: 27px;
+}
+.main .wrapper .questions-box .contact-form .left-form {
+  display: flex;
+  flex-direction: column;
+  margin-right: 27px;
+}
+.main .wrapper .questions-box .contact-form .form-input {
+  width: 100%;
+  padding-top: 15px;
+  border: none;
+  border-bottom: 2px solid black;
+  font-size: 2.2rem;
+}
+.main .wrapper .questions-box .contact-form .form-input:focus {
+  outline: none;
+}
+.main .wrapper .questions-box .contact-form .form-input::-moz-placeholder {
+  font-size: 2.2rem;
+  color: #c4c4c5;
+}
+.main .wrapper .questions-box .contact-form .form-input::placeholder {
+  font-size: 2.2rem;
+  color: #c4c4c5;
+}
+.main .wrapper .questions-box .contact-form-active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.2rem;
+}
 .main .wrapper .buttons {
   display: flex;
   justify-content: space-between;
