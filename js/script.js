@@ -134,10 +134,11 @@ const leftSection = document.createElement("div");
 const rightSection = document.createElement("div");
 const textArea = document.createElement("textarea");
 
-let currentQuestionIndex = 0;
+let currentQuestionIndex = 10;
 let userAnswers = [];
 let textAreaActive = false;
 let isAnswer = false;
+let infoFromUser;
 
 const handleStart = () => {
 	questionsBox.classList.add("fade-out-anim");
@@ -286,6 +287,8 @@ const showForm = () => {
 	sendBtn.style.display = "block";
 	skipBtn.style.display = "none";
 	questionName.textContent = "Twoje dane kontaktowe";
+
+	infoFromUser = textArea.value;
 };
 
 startBtn.addEventListener("click", handleStart);
