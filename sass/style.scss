@@ -57,9 +57,10 @@ body {
 		align-items: center;
 		flex-direction: column;
 		height: 442px;
-		width: 70%;
+		width: 60%;
 
 		.questions-box {
+			position: relative;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -163,12 +164,23 @@ body {
 					display: flex;
 					flex-direction: column;
 					margin-left: 27px;
+					margin-bottom: 98px;
 				}
 
 				.left-form {
 					display: flex;
 					flex-direction: column;
 					margin-right: 27px;
+
+					.rules {
+						display: none;
+						// background-color: red;
+						margin-top: 70px;
+					}
+
+					.rules-active {
+						display: inline-block;
+					}
 				}
 
 				.form-input {
@@ -195,6 +207,9 @@ body {
 				align-items: center;
 				font-size: 2.2rem;
 			}
+
+			// TODO
+			// ustawic checkboxa tak zeby byl w jednej linii z reszta
 		}
 
 		.buttons {

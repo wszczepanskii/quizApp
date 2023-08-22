@@ -50,9 +50,10 @@ body {
   align-items: center;
   flex-direction: column;
   height: 442px;
-  width: 70%;
+  width: 60%;
 }
 .main .wrapper .questions-box {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -143,11 +144,19 @@ body {
   display: flex;
   flex-direction: column;
   margin-left: 27px;
+  margin-bottom: 98px;
 }
 .main .wrapper .questions-box .contact-form .left-form {
   display: flex;
   flex-direction: column;
   margin-right: 27px;
+}
+.main .wrapper .questions-box .contact-form .left-form .rules {
+  display: none;
+  margin-top: 70px;
+}
+.main .wrapper .questions-box .contact-form .left-form .rules-active {
+  display: inline-block;
 }
 .main .wrapper .questions-box .contact-form .form-input {
   width: 100%;
