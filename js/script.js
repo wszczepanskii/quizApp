@@ -121,6 +121,7 @@ const questionNameOptions = document.querySelector(
 	".question-name-box__options"
 );
 const contactForm = document.querySelector(".contact-form");
+const rules = document.querySelector(".rules");
 
 const stateBtns = document.querySelectorAll(".state-btn");
 const nextBtn = document.querySelector(".buttons__next");
@@ -134,7 +135,7 @@ const leftSection = document.createElement("div");
 const rightSection = document.createElement("div");
 const textArea = document.createElement("textarea");
 
-let currentQuestionIndex = 10;
+let currentQuestionIndex = 0;
 let userAnswers = [];
 let textAreaActive = false;
 let isAnswer = false;
@@ -150,8 +151,13 @@ const removeContent = () => {
 	// 	questionsBox.removeChild(questionsBox.lastChild);
 	// }
 
-	[...questionsBox.children].forEach((child) =>
-		child !== contactForm ? questionsBox.removeChild(child) : null
+	[...questionsBox.children].forEach(
+		(child) => {
+			if (child !== contactForm && child !== rules) {
+				questionsBox.removeChild(child);
+			}
+		}
+		// child !== contactForm ? questionsBox.removeChild(child) : null
 	);
 
 	if (leftSection !== undefined && rightSection !== undefined) {
@@ -297,6 +303,7 @@ const showForm = () => {
 	questionsBox.style.display = "block";
 
 	contactForm.classList.add("contact-form-active");
+	rules.classList.add("rules-active");
 
 	infoFromUser = textArea.value;
 };
@@ -342,6 +349,8 @@ nextBtn.addEventListener("click", () => {
 
 prevBtn.addEventListener("click", () => {
 	contactForm.classList.remove("contact-form-active");
+	rules.classList.remove("rules-active");
+
 	if (currentQuestionIndex > 0 && currentQuestionIndex <= 11) {
 		currentQuestionIndex--;
 		showQuestion(currentQuestionIndex);
