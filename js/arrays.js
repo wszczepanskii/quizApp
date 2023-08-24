@@ -516,7 +516,7 @@ const questions3D = [
 	{
 		question: "W jakiej stylistyce mają być stworzone modele?",
 		answers: [
-			{ text: "Hight Poly" },
+			{ text: "High Poly" },
 			{ text: "Low Poly" },
 			{ text: "Jeszcze nie wiem" },
 		],
