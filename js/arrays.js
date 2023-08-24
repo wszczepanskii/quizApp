@@ -1,4 +1,4 @@
-const questionsMobile = [
+const startQuestion = [
 	{
 		question: "Jaki projekt chcesz stworzyć?",
 		answers: [
@@ -11,6 +11,12 @@ const questionsMobile = [
 			{ text: "Jeszcze nie wiem" },
 			{ text: "Inny" },
 		],
+	},
+];
+
+const questionsMobile = [
+	{
+		empty: "",
 	},
 	{
 		question: "Na jaką platformę ma być przeznaczona aplikacja?",
@@ -113,6 +119,9 @@ const questionsMobile = [
 ];
 
 const questionsAR = [
+	{
+		empty: "",
+	},
 	{
 		question: "Jaki rodzaj aplikacji?",
 		answers: [{ text: "AR" }, { text: "WebAR" }],
@@ -218,6 +227,9 @@ const questionsAR = [
 ];
 
 const questionsVR = [
+	{
+		empty: "",
+	},
 	{
 		question: "Jaki rodzaj aplikacji?",
 		answers: [
@@ -342,6 +354,9 @@ const questionsVR = [
 
 const questionsGame = [
 	{
+		empty: "",
+	},
+	{
 		question: "Na jaką platformę ma być przeznaczona gra?",
 		answers: [{ text: "VR" }, { text: "Mobile" }],
 	},
@@ -452,6 +467,9 @@ const questionsGame = [
 
 const questions3D = [
 	{
+		empty: "",
+	},
+	{
 		question: "Ile modeli mamy stworzyć?",
 		answers: [
 			{ text: "1" },
@@ -540,6 +558,9 @@ const questions3D = [
 
 const questionsIdk = [
 	{
+		empty: "",
+	},
+	{
 		question: "Na jakim etapie jest projekt?",
 		answers: [
 			{ text: "Robię research rynku" },
@@ -558,7 +579,6 @@ const questionsIdk = [
 			{ text: "Zapewnienie rozrywki" },
 			{ text: "Edukacja" },
 			{ text: "Szkolenie" },
-			{ text: "Rywalizacja" },
 			{ text: "Inny" },
 		],
 	},
@@ -622,6 +642,9 @@ const questionsIdk = [
 ];
 
 const questionsWeb = [
+	{
+		empty: "",
+	},
 	{
 		question: "Jaki rodzaj strony?",
 		answers: [
@@ -744,4 +767,5 @@ export {
 	questionsIdk,
 	questionsVR,
 	questionsWeb,
+	startQuestion,
 };
