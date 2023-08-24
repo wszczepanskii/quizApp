@@ -36,7 +36,8 @@ const textArea = document.createElement("textarea");
 let currentQuestionIndex = 0;
 let userAnswers = [];
 let textAreaActive = false;
-let isAnswer = false;
+let isAnswer = false,
+	userAnswerGame = false;
 let infoFromUser;
 
 let qeustionLength;
@@ -55,25 +56,19 @@ const handleStart = () => {
 };
 
 const removeContent = () => {
-	// while (questionsBox.firstChild) {
-	// 	questionsBox.removeChild(questionsBox.lastChild);
-	// }
-
-	[...questionsBox.children].forEach(
-		(child) => {
-			if (child !== contactForm && child !== rules) {
-				questionsBox.removeChild(child);
-			}
+	[...questionsBox.children].forEach((child) => {
+		if (child !== contactForm && child !== rules) {
+			questionsBox.removeChild(child);
 		}
-		// child !== contactForm ? questionsBox.removeChild(child) : null
-	);
+	});
 
-	if (leftSection !== undefined && rightSection !== undefined) {
-		while (leftSection.firstChild && rightSection.firstChild) {
-			leftSection.removeChild(leftSection.lastChild);
-			rightSection.removeChild(rightSection.lastChild);
-		}
-	}
+	[...leftSection.children].forEach((child) => {
+		leftSection.removeChild(child);
+	});
+
+	[...rightSection.children].forEach((child) => {
+		rightSection.removeChild(child);
+	});
 
 	textArea.remove();
 };
@@ -125,8 +120,6 @@ const createVR = (idx) => {
 		// checkMark.classList.add("fa-solid", "fa-check");
 	}
 };
-
-console.log(questionsIdk.length);
 
 const createAR = (idx) => {
 	questionName.textContent = questionsAR[idx].question;
@@ -239,6 +232,7 @@ const showQuestion = (idx) => {
 	questionsBox.style.flexDirection = "row";
 	questionsBox.style.justifyContent = "center";
 
+	// only on start
 	if (currentQuestionIndex === 0) {
 		questionName.textContent = startQuestion[0].question;
 		questionNameBox.style.display = "block";
@@ -442,7 +436,18 @@ questionsBox.addEventListener("animationend", () => {
 nextBtn.addEventListener("click", () => {
 	answerBtns.forEach((btn) => {
 		if (btn.classList.contains("active-btn")) {
-			userAnswers.push(`${currentQuestionIndex} ` + btn.textContent);
+			userAnswers.push(`${currentQuestionIndex} ${btn.textContent}`);
+		}
+
+		if (btn.classList.contains("active-btn") && btn.textContent === "VR") {
+			// console.log("Dasdas");
+			currentQuestionIndex = 2;
+		} else if (
+			btn.classList.contains("active-btn") &&
+			btn.textContent === "Mobile"
+		) {
+			userAnswerGame = true;
+			// currentQuestionIndex = 3;
 		}
 	});
 
@@ -457,26 +462,28 @@ nextBtn.addEventListener("click", () => {
 		}
 	}
 
-	if (isAnswer) {
-		console.log(qeustionLength);
-		if (currentQuestionIndex < qeustionLength - 1) {
-			currentQuestionIndex++;
-			// console.log(currentQuestionIndex + " dasdas");
-			showQuestion(currentQuestionIndex);
-		} else {
-			currentQuestionIndex = qeustionLength + 1;
-			showTextInput();
-			questionsBox.style.flexDirection = "column";
-			questionsBox.style.justifyContent = "space-between";
-		}
-	} else {
+	if (!isAnswer) {
 		alert("Proszę wybrać odpowiedź");
+		return;
+	}
+
+	if (userAnswerGame && currentQuestionIndex === 2) {
+		console.log("kdjsakjdas");
+		userAnswerGame = false;
+		// flag = false;
+		currentQuestionIndex = 3;
+	}
+
+	if (currentQuestionIndex < qeustionLength - 1) {
+		currentQuestionIndex++;
+		showQuestion(currentQuestionIndex);
+	} else {
+		// currentQuestionIndex = qeustionLength + 1;
+		showTextInput();
+		questionsBox.style.flexDirection = "column";
+		questionsBox.style.justifyContent = "space-between";
 	}
 });
-
-// console.log(questionsIdk.length + " dlugosc");
-
-console.log(questionsIdk.length + " dsahkjdas");
 
 prevBtn.addEventListener("click", () => {
 	contactForm.classList.remove("contact-form-active");
