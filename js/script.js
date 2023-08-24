@@ -202,12 +202,69 @@ const createIdk = (idx) => {
 };
 
 const showHelp = () => {
-	if (currentQuestionIndex >= 1 && currentQuestionIndex <= 4) {
-		// multiple options
-		questionNameOptions.style.display = "block";
-	} else {
-		// one option
-		questionNameOptions.style.display = "none";
+	if (mobile) {
+		if (currentQuestionIndex >= 1 && currentQuestionIndex <= 4) {
+			// multiple options
+			questionNameOptions.style.display = "block";
+		} else {
+			// one option
+			questionNameOptions.style.display = "none";
+		}
+	} else if (ar) {
+		if (
+			(currentQuestionIndex >= 2 && currentQuestionIndex <= 6) ||
+			currentQuestionIndex === 8
+		) {
+			questionNameOptions.style.display = "block";
+		} else {
+			questionNameOptions.style.display = "none";
+		}
+	} else if (vr) {
+		if (
+			currentQuestionIndex === 1 ||
+			(currentQuestionIndex >= 3 && currentQuestionIndex <= 6) ||
+			currentQuestionIndex === 8
+		) {
+			questionNameOptions.style.display = "block";
+		} else {
+			questionNameOptions.style.display = "none";
+		}
+	} else if (game) {
+		if (
+			currentQuestionIndex === 2 ||
+			(currentQuestionIndex >= 4 && currentQuestionIndex <= 7) ||
+			currentQuestionIndex === 8
+		) {
+			questionNameOptions.style.display = "block";
+		} else {
+			questionNameOptions.style.display = "none";
+		}
+	} else if (model3D) {
+		if (
+			(currentQuestionIndex >= 2 && currentQuestionIndex <= 3) ||
+			currentQuestionIndex === 5
+		) {
+			questionNameOptions.style.display = "block";
+		} else {
+			questionNameOptions.style.display = "none";
+		}
+	} else if (idk) {
+		if (currentQuestionIndex >= 1 && currentQuestionIndex <= 4) {
+			console.log("DSAdas");
+			questionNameOptions.style.display = "block";
+		} else {
+			questionNameOptions.style.display = "none";
+		}
+	} else if (web) {
+		if (
+			(currentQuestionIndex >= 2 && currentQuestionIndex <= 3) ||
+			(currentQuestionIndex >= 5 && currentQuestionIndex <= 6) ||
+			currentQuestionIndex === 8
+		) {
+			questionNameOptions.style.display = "block";
+		} else {
+			questionNameOptions.style.display = "none";
+		}
 	}
 };
 
@@ -274,9 +331,6 @@ const showQuestion = (idx) => {
 		} else if (idk) {
 			qeustionLength = questionsIdk.length;
 			createIdk(idx);
-		} else if (other) {
-			qeustionLength = questionsIdk.length;
-			createIdk(idx);
 		}
 	}
 
@@ -294,8 +348,9 @@ const showQuestion = (idx) => {
 		btn.addEventListener("click", () => {
 			// console.log(answerArr[btn.getAttribute("data-number")].textContent);
 			// console.log(btn.getAttribute("data-number"));
+
 			// multiple options
-			if (currentQuestionIndex >= 1 && currentQuestionIndex <= 4) {
+			if (questionNameOptions.style.display === "block") {
 				if (btn.classList.contains("active-btn")) {
 					btn.classList.remove("active-btn");
 					btn.classList.add("hover");
@@ -334,9 +389,7 @@ const showQuestion = (idx) => {
 					(model3D = false),
 					(web = false),
 					(idk = false),
-					(other = false);
-
-				qeustionLength = 0;
+					(qeustionLength = 0);
 
 				const expr = btn.textContent;
 
@@ -371,16 +424,10 @@ const showQuestion = (idx) => {
 						break;
 					case "Inny":
 						qeustionLength = questionsIdk.length;
-						other = true;
+						idk = true;
 						break;
 				}
-
-				// console.log(mobile, vr, ar, game, model3D, web, idk, other);
 			}
-
-			// if (btn.textContent === "Aplikacja mobilna") {
-			// 	mobile = true;
-			// }
 		});
 
 		if (userAnswers.includes(`${currentQuestionIndex} ${btn.textContent}`)) {
@@ -388,10 +435,6 @@ const showQuestion = (idx) => {
 			btn.classList.remove("hover");
 		}
 	});
-
-	// setTimeout(() => {
-	// 	questionsBox.classList.add("fade-in-anim");
-	// }, 0.8);
 };
 
 const showTextInput = () => {
@@ -468,7 +511,7 @@ nextBtn.addEventListener("click", () => {
 	}
 
 	if (userAnswerGame && currentQuestionIndex === 2) {
-		console.log("kdjsakjdas");
+		// console.log("kdjsakjdas");
 		userAnswerGame = false;
 		// flag = false;
 		currentQuestionIndex = 3;
