@@ -77,6 +77,9 @@ body {
 				height: 100%;
 
 				.answer-btn {
+					display: flex;
+					justify-content: center;
+					align-items: center;
 					width: 100%;
 					margin-bottom: 36px;
 					padding: 12px 0;
@@ -89,7 +92,12 @@ body {
 
 					i {
 						position: relative;
-						left: 0;
+						left: 25px;
+						margin-right: auto;
+					}
+
+					span {
+						margin-right: auto;
 					}
 				}
 
@@ -103,21 +111,15 @@ body {
 					background-color: c.$vsh-blue;
 					color: white;
 				}
-
-				.left-btn {
-					margin-right: 18px;
-				}
-
-				.right-btn {
-					margin-left: 18px;
-				}
 			}
 
 			.section-left {
+				padding-right: 18px;
 				align-items: flex-end;
 			}
 
 			.section-right {
+				padding-left: 18px;
 				align-items: flex-start;
 			}
 
@@ -216,6 +218,8 @@ body {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+			position: absolute;
+			bottom: 110px;
 			width: 100%;
 
 			.state-btn {
