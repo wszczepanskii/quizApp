@@ -1,4 +1,14 @@
-import { questionsMobile, encourageArr } from "./arrays.js";
+import {
+	questionsMobile,
+	encourageArr,
+	questions3D,
+	questionsAR,
+	questionsGame,
+	questionsIdk,
+	questionsVR,
+	questionsWeb,
+	startQuestion,
+} from "./arrays.js";
 
 const startBtn = document.querySelector(".start-btn");
 const main = document.querySelector(".main");
@@ -29,6 +39,17 @@ let textAreaActive = false;
 let isAnswer = false;
 let infoFromUser;
 
+let qeustionLength;
+
+let mobile = false,
+	vr = false,
+	ar = false,
+	game = false,
+	model3D = false,
+	web = false,
+	idk = false,
+	other = false;
+
 const handleStart = () => {
 	questionsBox.classList.add("fade-out-anim");
 };
@@ -55,6 +76,136 @@ const removeContent = () => {
 	}
 
 	textArea.remove();
+};
+
+const createMobile = (idx) => {
+	questionName.textContent = questionsMobile[idx].question;
+	questionNameBox.style.display = "block";
+	for (let i = 0; i < questionsMobile[idx].answers.length; i++) {
+		const questionBtn = document.createElement("button");
+		// const checkMark = document.createElement("i");
+
+		// questionBtn.innerHTML = `<i class="fa-solid fa-check" style="position: relative; left: 25px; margin-right: auto;"></i> <span>${questionsMobile[idx].answers[i].text}</span>`;
+
+		questionBtn.classList.add("answer-btn", "hover");
+		questionBtn.textContent = questionsMobile[idx].answers[i].text;
+		if (i % 2 === 0) {
+			leftSection.append(questionBtn);
+		} else {
+			rightSection.append(questionBtn);
+		}
+
+		// questionBtn.setAttribute("data-number", i);
+
+		// questionBtn.append(checkMark);
+		// checkMark.classList.add("fa-solid", "fa-check");
+	}
+};
+
+const createVR = (idx) => {
+	questionName.textContent = questionsVR[idx].question;
+	questionNameBox.style.display = "block";
+	for (let i = 0; i < questionsVR[idx].answers.length; i++) {
+		const questionBtn = document.createElement("button");
+		// const checkMark = document.createElement("i");
+
+		// questionBtn.innerHTML = `<i class="fa-solid fa-check" style="position: relative; left: 25px; margin-right: auto;"></i> <span>${questionsMobile[idx].answers[i].text}</span>`;
+
+		questionBtn.classList.add("answer-btn", "hover");
+		questionBtn.textContent = questionsVR[idx].answers[i].text;
+		if (i % 2 === 0) {
+			leftSection.append(questionBtn);
+		} else {
+			rightSection.append(questionBtn);
+		}
+
+		// questionBtn.setAttribute("data-number", i);
+
+		// questionBtn.append(checkMark);
+		// checkMark.classList.add("fa-solid", "fa-check");
+	}
+};
+
+console.log(questionsIdk.length);
+
+const createAR = (idx) => {
+	questionName.textContent = questionsAR[idx].question;
+	questionNameBox.style.display = "block";
+	for (let i = 0; i < questionsAR[idx].answers.length; i++) {
+		const questionBtn = document.createElement("button");
+
+		questionBtn.classList.add("answer-btn", "hover");
+		questionBtn.textContent = questionsAR[idx].answers[i].text;
+		if (i % 2 === 0) {
+			leftSection.append(questionBtn);
+		} else {
+			rightSection.append(questionBtn);
+		}
+	}
+};
+
+const createGame = (idx) => {
+	questionName.textContent = questionsGame[idx].question;
+	questionNameBox.style.display = "block";
+	for (let i = 0; i < questionsGame[idx].answers.length; i++) {
+		const questionBtn = document.createElement("button");
+
+		questionBtn.classList.add("answer-btn", "hover");
+		questionBtn.textContent = questionsGame[idx].answers[i].text;
+		if (i % 2 === 0) {
+			leftSection.append(questionBtn);
+		} else {
+			rightSection.append(questionBtn);
+		}
+	}
+};
+
+const createModel3D = (idx) => {
+	questionName.textContent = questions3D[idx].question;
+	questionNameBox.style.display = "block";
+	for (let i = 0; i < questions3D[idx].answers.length; i++) {
+		const questionBtn = document.createElement("button");
+
+		questionBtn.classList.add("answer-btn", "hover");
+		questionBtn.textContent = questions3D[idx].answers[i].text;
+		if (i % 2 === 0) {
+			leftSection.append(questionBtn);
+		} else {
+			rightSection.append(questionBtn);
+		}
+	}
+};
+
+const createWeb = (idx) => {
+	questionName.textContent = questionsWeb[idx].question;
+	questionNameBox.style.display = "block";
+	for (let i = 0; i < questionsWeb[idx].answers.length; i++) {
+		const questionBtn = document.createElement("button");
+
+		questionBtn.classList.add("answer-btn", "hover");
+		questionBtn.textContent = questionsWeb[idx].answers[i].text;
+		if (i % 2 === 0) {
+			leftSection.append(questionBtn);
+		} else {
+			rightSection.append(questionBtn);
+		}
+	}
+};
+
+const createIdk = (idx) => {
+	questionName.textContent = questionsIdk[idx].question;
+	questionNameBox.style.display = "block";
+	for (let i = 0; i < questionsIdk[idx].answers.length; i++) {
+		const questionBtn = document.createElement("button");
+
+		questionBtn.classList.add("answer-btn", "hover");
+		questionBtn.textContent = questionsIdk[idx].answers[i].text;
+		if (i % 2 === 0) {
+			leftSection.append(questionBtn);
+		} else {
+			rightSection.append(questionBtn);
+		}
+	}
 };
 
 const showHelp = () => {
@@ -88,26 +239,51 @@ const showQuestion = (idx) => {
 	questionsBox.style.flexDirection = "row";
 	questionsBox.style.justifyContent = "center";
 
-	questionName.textContent = questionsMobile[idx].question;
-	questionNameBox.style.display = "block";
+	if (currentQuestionIndex === 0) {
+		questionName.textContent = startQuestion[0].question;
+		questionNameBox.style.display = "block";
+		for (let i = 0; i < startQuestion[0].answers.length; i++) {
+			const questionBtn = document.createElement("button");
+			// const checkMark = document.createElement("i");
 
-	for (let i = 0; i < questionsMobile[idx].answers.length; i++) {
-		const questionBtn = document.createElement("button");
-		// const checkMark = document.createElement("i");
+			// questionBtn.innerHTML = `<i class="fa-solid fa-check" style="position: relative; left: 25px; margin-right: auto;"></i> <span>${questionsMobile[idx].answers[i].text}</span>`;
 
-		questionBtn.classList.add("answer-btn", "hover");
-		// questionBtn.append(checkMark);
-		questionBtn.textContent = questionsMobile[idx].answers[i].text;
-		if (i % 2 === 0) {
-			leftSection.append(questionBtn);
-			questionBtn.classList.add("left-btn");
-		} else {
-			rightSection.append(questionBtn);
-			questionBtn.classList.add("right-btn");
+			questionBtn.classList.add("answer-btn", "hover");
+			questionBtn.textContent = startQuestion[0].answers[i].text;
+			if (i % 2 === 0) {
+				leftSection.append(questionBtn);
+			} else {
+				rightSection.append(questionBtn);
+			}
 		}
+	}
 
-		// checkMark.classList.add("fa-solid");
-		// checkMark.classList.add("fa-check");
+	if (currentQuestionIndex !== 0) {
+		if (mobile) {
+			qeustionLength = questionsMobile.length;
+			createMobile(idx);
+		} else if (vr) {
+			qeustionLength = questionsVR.length;
+			createVR(idx);
+		} else if (ar) {
+			qeustionLength = questionsAR.length;
+			createAR(idx);
+		} else if (game) {
+			qeustionLength = questionsGame.length;
+			createGame(idx);
+		} else if (model3D) {
+			qeustionLength = questions3D.length;
+			createModel3D(idx);
+		} else if (web) {
+			qeustionLength = questionsWeb.length;
+			createWeb(idx);
+		} else if (idk) {
+			qeustionLength = questionsIdk.length;
+			createIdk(idx);
+		} else if (other) {
+			qeustionLength = questionsIdk.length;
+			createIdk(idx);
+		}
 	}
 
 	answerBtns = document.querySelectorAll(".answer-btn");
@@ -117,18 +293,24 @@ const showQuestion = (idx) => {
 	showHelp();
 
 	answerArr = [...answerBtns];
+	// console.log(answerArr);
 	let active = false;
 	console.log(currentQuestionIndex);
 	answerBtns.forEach((btn) => {
 		btn.addEventListener("click", () => {
+			// console.log(answerArr[btn.getAttribute("data-number")].textContent);
+			// console.log(btn.getAttribute("data-number"));
 			// multiple options
 			if (currentQuestionIndex >= 1 && currentQuestionIndex <= 4) {
 				if (btn.classList.contains("active-btn")) {
 					btn.classList.remove("active-btn");
 					btn.classList.add("hover");
+
+					// btn.innerHTML = `<i class="fa-solid fa-check"></i> ${e.target.textContent}`;
 				} else {
 					btn.classList.add("active-btn");
 					btn.classList.remove("hover");
+					// btn.innerHTML = `${e.target.textContent}`;
 				}
 			} else {
 				// one option
@@ -149,6 +331,62 @@ const showQuestion = (idx) => {
 					active = false;
 				}
 			}
+
+			if (currentQuestionIndex === 0 && btn.classList.contains("active-btn")) {
+				(mobile = false),
+					(vr = false),
+					(ar = false),
+					(game = false),
+					(model3D = false),
+					(web = false),
+					(idk = false),
+					(other = false);
+
+				qeustionLength = 0;
+
+				const expr = btn.textContent;
+
+				switch (expr) {
+					case "Aplikacja mobilna":
+						qeustionLength = questionsMobile.length;
+						mobile = true;
+						break;
+					case "Aplikacja VR":
+						qeustionLength = questionsVR.length;
+						vr = true;
+						break;
+					case "Aplikacja AR":
+						qeustionLength = questionsAR.length;
+						ar = true;
+						break;
+					case "Gra":
+						qeustionLength = questionsGame.length;
+						game = true;
+						break;
+					case "Modelowanie 3D":
+						qeustionLength = questions3D.length;
+						model3D = true;
+						break;
+					case "Web":
+						qeustionLength = questionsWeb.length;
+						web = true;
+						break;
+					case "Jeszcze nie wiem":
+						qeustionLength = questionsIdk.length;
+						idk = true;
+						break;
+					case "Inny":
+						qeustionLength = questionsIdk.length;
+						other = true;
+						break;
+				}
+
+				// console.log(mobile, vr, ar, game, model3D, web, idk, other);
+			}
+
+			// if (btn.textContent === "Aplikacja mobilna") {
+			// 	mobile = true;
+			// }
 		});
 
 		if (userAnswers.includes(`${currentQuestionIndex} ${btn.textContent}`)) {
@@ -164,7 +402,7 @@ const showQuestion = (idx) => {
 
 const showTextInput = () => {
 	removeContent();
-	currentQuestionIndex = 11;
+	currentQuestionIndex = qeustionLength;
 	skipBtn.style.display = "block";
 	nextBtn.style.display = "none";
 	sendBtn.style.display = "none";
@@ -182,7 +420,7 @@ const showTextInput = () => {
 
 const showForm = () => {
 	removeContent();
-	currentQuestionIndex = 12;
+	currentQuestionIndex = qeustionLength + 1;
 	sendBtn.style.display = "block";
 	skipBtn.style.display = "none";
 	questionName.textContent = "Twoje dane kontaktowe";
@@ -220,11 +458,13 @@ nextBtn.addEventListener("click", () => {
 	}
 
 	if (isAnswer) {
-		if (currentQuestionIndex < 10) {
+		console.log(qeustionLength);
+		if (currentQuestionIndex < qeustionLength - 1) {
 			currentQuestionIndex++;
+			// console.log(currentQuestionIndex + " dasdas");
 			showQuestion(currentQuestionIndex);
 		} else {
-			currentQuestionIndex = 11;
+			currentQuestionIndex = qeustionLength + 1;
 			showTextInput();
 			questionsBox.style.flexDirection = "column";
 			questionsBox.style.justifyContent = "space-between";
@@ -234,11 +474,15 @@ nextBtn.addEventListener("click", () => {
 	}
 });
 
+// console.log(questionsIdk.length + " dlugosc");
+
+console.log(questionsIdk.length + " dsahkjdas");
+
 prevBtn.addEventListener("click", () => {
 	contactForm.classList.remove("contact-form-active");
 	rules.classList.remove("rules-active");
 
-	if (currentQuestionIndex > 0 && currentQuestionIndex <= 11) {
+	if (currentQuestionIndex > 0 && currentQuestionIndex <= qeustionLength) {
 		currentQuestionIndex--;
 		showQuestion(currentQuestionIndex);
 	} else if (currentQuestionIndex > 0) {
