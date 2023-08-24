@@ -2,3 +2,4 @@
 2. zachecacze
 3. checkmarki
 4. responsywnosc
+5. animacje podczas przechodzenia do kolejnego pytania
