@@ -1,0 +1,4 @@
+1. progessbar
+2. zachecacze
+3. checkmarki
+4. responsywnosc
