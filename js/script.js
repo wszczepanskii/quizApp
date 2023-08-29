@@ -11,7 +11,6 @@ import {
 } from "./arrays.js";
 
 const startBtn = document.querySelector(".start-btn");
-const main = document.querySelector(".main");
 const questionsBox = document.querySelector(".questions-box");
 const questionNameBox = document.querySelector(".question-name-box");
 const questionName = document.querySelector(".question-name-box__h1");
@@ -20,6 +19,8 @@ const questionNameOptions = document.querySelector(
 );
 const contactForm = document.querySelector(".contact-form");
 const rules = document.querySelector(".rules");
+const quizEnd = document.querySelector(".quiz-end");
+const quizEndBtn = document.querySelector(".quiz-end__box-buttons--back");
 
 const stateBtns = document.querySelectorAll(".state-btn");
 const nextBtn = document.querySelector(".buttons__next");
@@ -50,6 +51,9 @@ let mobile = false,
 	web = false,
 	idk = false,
 	other = false;
+
+let flagVR = false,
+	flagMobile = false;
 
 const handleStart = () => {
 	questionsBox.classList.add("fade-out-anim");
@@ -268,6 +272,34 @@ const showHelp = () => {
 	}
 };
 
+const checkAnswer = () => {
+	if (flagVR) {
+		currentQuestionIndex = 2;
+	} else if (flagMobile) {
+		userAnswerGame = true;
+	}
+
+	if (userAnswerGame && currentQuestionIndex === 2) {
+		console.log("mobile");
+		userAnswerGame = false;
+		currentQuestionIndex = 3;
+	}
+};
+
+const nextQuestion = () => {
+	checkAnswer();
+
+	if (currentQuestionIndex < qeustionLength - 1) {
+		currentQuestionIndex++;
+		showQuestion(currentQuestionIndex);
+	} else {
+		// currentQuestionIndex = qeustionLength + 1;
+		showTextInput();
+		questionsBox.style.flexDirection = "column";
+		questionsBox.style.justifyContent = "space-between";
+	}
+};
+
 const showQuestion = (idx) => {
 	removeContent();
 
@@ -286,7 +318,12 @@ const showQuestion = (idx) => {
 
 	questionsBox.append(leftSection, rightSection);
 	questionsBox.style.display = "flex";
-	questionsBox.style.flexDirection = "row";
+
+	if (window.innerWidth >= 390 && window.innerWidth < 1024) {
+		questionsBox.style.flexDirection = "column";
+	} else {
+		questionsBox.style.flexDirection = "row";
+	}
 	questionsBox.style.justifyContent = "center";
 
 	// only on start
@@ -344,44 +381,16 @@ const showQuestion = (idx) => {
 	// console.log(answerArr);
 	let active = false;
 	console.log(currentQuestionIndex);
+
+	if (questionNameOptions.style.display === "block") {
+		nextBtn.style.display = "block";
+	} else {
+		nextBtn.style.display = "none";
+	}
+
 	answerBtns.forEach((btn) => {
 		btn.addEventListener("click", () => {
-			// console.log(answerArr[btn.getAttribute("data-number")].textContent);
-			// console.log(btn.getAttribute("data-number"));
-
-			// multiple options
-			if (questionNameOptions.style.display === "block") {
-				if (btn.classList.contains("active-btn")) {
-					btn.classList.remove("active-btn");
-					btn.classList.add("hover");
-
-					// btn.innerHTML = `<i class="fa-solid fa-check"></i> ${e.target.textContent}`;
-				} else {
-					btn.classList.add("active-btn");
-					btn.classList.remove("hover");
-					// btn.innerHTML = `${e.target.textContent}`;
-				}
-			} else {
-				// one option
-				for (let i = 0; i < answerArr.length; i++) {
-					if (answerArr[i].classList.contains("active-btn")) {
-						active = true;
-					}
-				}
-
-				if (!active) {
-					btn.setAttribute("aria-checked", "true");
-					btn.classList.remove("hover");
-					btn.classList.add("active-btn");
-				} else {
-					btn.setAttribute("aria-checked", "false");
-					btn.classList.remove("active-btn");
-					btn.classList.add("hover");
-					active = false;
-				}
-			}
-
-			if (currentQuestionIndex === 0 && btn.classList.contains("active-btn")) {
+			if (currentQuestionIndex === 0) {
 				(mobile = false),
 					(vr = false),
 					(ar = false),
@@ -428,6 +437,54 @@ const showQuestion = (idx) => {
 						break;
 				}
 			}
+
+			// console.log(answerArr[btn.getAttribute("data-number")].textContent);
+			// console.log(btn.getAttribute("data-number"));
+
+			// multiple options
+			if (questionNameOptions.style.display === "block") {
+				if (btn.classList.contains("active-btn")) {
+					btn.classList.remove("active-btn");
+					btn.classList.add("hover");
+
+					// btn.innerHTML = `<i class="fa-solid fa-check"></i> ${e.target.textContent}`;
+				} else {
+					btn.classList.add("active-btn");
+					btn.classList.remove("hover");
+					// btn.innerHTML = `${e.target.textContent}`;
+				}
+			} else {
+				// one option
+				userAnswers.push(`${currentQuestionIndex} ${btn.textContent}`);
+
+				for (let i = 0; i < answerArr.length; i++) {
+					if (answerArr[i].classList.contains("active-btn")) {
+						active = true;
+					}
+				}
+
+				if (!active) {
+					btn.setAttribute("aria-checked", "true");
+					btn.classList.remove("hover");
+					btn.classList.add("active-btn");
+				} else {
+					btn.setAttribute("aria-checked", "false");
+					btn.classList.remove("active-btn");
+					btn.classList.add("hover");
+					active = false;
+				}
+
+				flagVR = false;
+				flagMobile = false;
+
+				if (btn.textContent === "VR") {
+					flagVR = true;
+				} else if (btn.textContent === "Mobile") {
+					flagMobile = true;
+				}
+
+				nextQuestion();
+			}
 		});
 
 		if (userAnswers.includes(`${currentQuestionIndex} ${btn.textContent}`)) {
@@ -470,6 +527,14 @@ const showForm = () => {
 	infoFromUser = textArea.value;
 };
 
+const handleEnd = () => {
+	window.location.replace("https://vhsoft.io/");
+};
+
+const showEndScreen = () => {
+	quizEnd.style.display = "flex";
+};
+
 startBtn.addEventListener("click", handleStart);
 
 questionsBox.addEventListener("animationend", () => {
@@ -480,17 +545,6 @@ nextBtn.addEventListener("click", () => {
 	answerBtns.forEach((btn) => {
 		if (btn.classList.contains("active-btn")) {
 			userAnswers.push(`${currentQuestionIndex} ${btn.textContent}`);
-		}
-
-		if (btn.classList.contains("active-btn") && btn.textContent === "VR") {
-			// console.log("Dasdas");
-			currentQuestionIndex = 2;
-		} else if (
-			btn.classList.contains("active-btn") &&
-			btn.textContent === "Mobile"
-		) {
-			userAnswerGame = true;
-			// currentQuestionIndex = 3;
 		}
 	});
 
@@ -509,23 +563,7 @@ nextBtn.addEventListener("click", () => {
 		alert("Proszę wybrać odpowiedź");
 		return;
 	}
-
-	if (userAnswerGame && currentQuestionIndex === 2) {
-		// console.log("kdjsakjdas");
-		userAnswerGame = false;
-		// flag = false;
-		currentQuestionIndex = 3;
-	}
-
-	if (currentQuestionIndex < qeustionLength - 1) {
-		currentQuestionIndex++;
-		showQuestion(currentQuestionIndex);
-	} else {
-		// currentQuestionIndex = qeustionLength + 1;
-		showTextInput();
-		questionsBox.style.flexDirection = "column";
-		questionsBox.style.justifyContent = "space-between";
-	}
+	nextQuestion();
 });
 
 prevBtn.addEventListener("click", () => {
@@ -549,3 +587,14 @@ prevBtn.addEventListener("click", () => {
 });
 
 skipBtn.addEventListener("click", showForm);
+quizEndBtn.addEventListener("click", handleEnd);
+sendBtn.addEventListener("click", showEndScreen);
+// window.addEventListener("beforeunload", (e) => {
+// 	e.preventDefault();
+// 	const message = "POjebalo cie?";
+
+// 	e.returnValue = message;
+
+// 	dupa.style.display = "block";
+// 	return dupa;
+// });
