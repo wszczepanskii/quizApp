@@ -8,16 +8,11 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
 			rel="stylesheet"
 		/>
 
 		<title>Quiz App</title>
-
-		<script
-			src="https://kit.fontawesome.com/22b2a63529.js"
-			crossorigin="anonymous"
-		></script>
 
 		<link rel="stylesheet" href="./css/style.css" />
 	</head>
@@ -89,6 +84,36 @@
 				</div>
 			</div>
 		</main>
+
+		<div class="quiz-end">
+			<div class="quiz-end__box">
+				<div class="progress-bar"></div>
+				<div class="quiz-end__box-title">
+					<h1 class="quiz-end__box-title--h1">
+						Dziękujęmy za przejście quizu!
+					</h1>
+					<p class="quiz-end__box-title--p">Wybierz swoją nagrodę</p>
+				</div>
+				<div class="quiz-end__box-prize">
+					<button class="quiz-end__box-prize-meet end-box">
+						<p class="quiz-end__box-prize-text">
+							Darmowa konsultacja 15/30 minut
+						</p>
+						<img
+							src="img/partnership.png"
+							alt="Dwójka ludzi przybijających piątkę"
+						/>
+					</button>
+					<button class="quiz-end__box-prize-ar end-box">
+						<p class="quiz-end__box-prize-text">Prezent w AR</p>
+						<img src="img/AR_4.png" alt="Telefon" />
+					</button>
+				</div>
+				<div class="quiz-end__box-buttons">
+					<button class="quiz-end__box-buttons--back">Wróć na stronę</button>
+				</div>
+			</div>
+		</div>
 
 		<script src="./js/script.js" type="module"></script>
 	</body>
