@@ -1,5 +1,5 @@
 @use "./colors" as c;
-@use "./mixins";
+@use "./mixins" as m;
 
 *,
 *::before,
@@ -52,12 +52,7 @@ body {
 	}
 
 	.wrapper {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		height: 442px;
-		width: 80%;
+		@include m.wrapper;
 
 		.questions-box {
 			position: relative;
@@ -67,6 +62,7 @@ body {
 			flex-direction: column;
 			height: 100%;
 			width: 100%;
+			text-align: center;
 
 			.section {
 				display: flex;
@@ -255,8 +251,6 @@ body {
 				border: 2px solid c.$vsh-darkgrey;
 				color: c.$vsh-darkgrey;
 
-				cursor: pointer;
-
 				&:hover {
 					background-color: #ededed;
 				}
@@ -267,8 +261,6 @@ body {
 				background-color: white;
 				border: 2px solid c.$vsh-darkgrey;
 				color: c.$vsh-darkgrey;
-
-				cursor: pointer;
 
 				&:hover {
 					background-color: #ededed;
@@ -284,6 +276,91 @@ body {
 				&:hover {
 					color: c.$vsh-blue;
 					background-color: white;
+				}
+			}
+		}
+	}
+}
+
+.quiz-end {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	height: 100vh;
+	width: 100vw;
+	background-color: white;
+
+	&__box {
+		@include m.wrapper;
+
+		&-title {
+			text-align: center;
+
+			&--h1 {
+				font-size: 36px;
+				margin-bottom: 20px;
+			}
+
+			&--p {
+				font-size: 24px;
+			}
+		}
+
+		&-prize {
+			display: flex;
+			justify-content: space-evenly;
+			align-items: center;
+			width: 100%;
+			margin-top: 75px;
+
+			.end-box {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				padding: 20px 40px;
+				border: 2px solid #272727;
+				border-radius: 9px;
+				background: none;
+				width: 30%;
+
+				&:hover {
+					cursor: pointer;
+				}
+			}
+
+			&-text {
+				font-size: 20px;
+				margin-bottom: 29px;
+			}
+		}
+
+		&-buttons {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			position: absolute;
+			bottom: 110px;
+			width: 100%;
+
+			&--back {
+				padding: 11px 54px;
+				border-radius: 100px;
+				font-size: 2.2rem;
+				font-weight: 600;
+				margin-left: 16%;
+				background-color: white;
+				border: 2px solid c.$vsh-darkgrey;
+				color: c.$vsh-darkgrey;
+
+				cursor: pointer;
+
+				&:hover {
+					background-color: #ededed;
 				}
 			}
 		}
@@ -316,11 +393,44 @@ body {
 	}
 }
 
-// @media (min-width) {
-// 	.main {
-// 		.wrapper {
-// 			.start-h1 {
-// 			}
-// 		}
-// 	}
-// }
+@media (max-width: 744px) {
+	.main {
+		.wrapper {
+			.questions-box {
+				.section {
+					height: auto;
+					.answer-btn {
+						margin-bottom: 20px;
+						font-size: 1.4rem;
+						max-width: none;
+					}
+				}
+
+				.section-left {
+					padding-right: 0;
+					align-items: center;
+				}
+
+				.section-right {
+					padding-left: 0;
+					align-items: center;
+				}
+			}
+
+			.buttons {
+				bottom: 30px;
+
+				.state-btn {
+					padding: 7px 25px;
+					border-radius: 60px;
+					font-size: 1.2rem;
+				}
+
+				&__prev{
+					margin-left: 10%;
+					border-width: 1px;
+				}
+			}
+		}
+	}
+}
