@@ -8,6 +8,7 @@ import {
 	questionsVR,
 	questionsWeb,
 	startQuestion,
+	mobileFirstQuestion,
 } from "./arrays.js";
 
 const startBtn = document.querySelector(".start-btn");
@@ -54,6 +55,8 @@ let mobile = false,
 
 let flagVR = false,
 	flagMobile = false;
+
+let tempFirstArr = [];
 
 const handleStart = () => {
 	questionsBox.classList.add("fade-out-anim");
@@ -321,23 +324,25 @@ const showQuestion = (idx) => {
 
 	if (window.innerWidth >= 390 && window.innerWidth < 1024) {
 		questionsBox.style.flexDirection = "column";
+		tempFirstArr = mobileFirstQuestion;
 	} else {
+		tempFirstArr = startQuestion;
 		questionsBox.style.flexDirection = "row";
 	}
 	questionsBox.style.justifyContent = "center";
 
 	// only on start
 	if (currentQuestionIndex === 0) {
-		questionName.textContent = startQuestion[0].question;
+		questionName.textContent = tempFirstArr[0].question;
 		questionNameBox.style.display = "block";
-		for (let i = 0; i < startQuestion[0].answers.length; i++) {
+		for (let i = 0; i < tempFirstArr[0].answers.length; i++) {
 			const questionBtn = document.createElement("button");
 			// const checkMark = document.createElement("i");
 
 			// questionBtn.innerHTML = `<i class="fa-solid fa-check" style="position: relative; left: 25px; margin-right: auto;"></i> <span>${questionsMobile[idx].answers[i].text}</span>`;
 
 			questionBtn.classList.add("answer-btn", "hover");
-			questionBtn.textContent = startQuestion[0].answers[i].text;
+			questionBtn.textContent = tempFirstArr[0].answers[i].text;
 			if (i % 2 === 0) {
 				leftSection.append(questionBtn);
 			} else {
