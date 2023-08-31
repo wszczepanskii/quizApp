@@ -147,6 +147,7 @@ body {
 				padding-left: 15px;
 				padding-top: 15px;
 				resize: none;
+				border-radius: 5px;
 				font-size: 2rem;
 
 				&::placeholder {
@@ -162,7 +163,6 @@ body {
 					display: flex;
 					flex-direction: column;
 					margin-left: 27px;
-					margin-bottom: 98px;
 				}
 
 				.left-form {
@@ -177,7 +177,8 @@ body {
 					}
 
 					.rules-active {
-						display: inline-block;
+						// display: inline-block;
+						display: none;
 					}
 				}
 
@@ -202,12 +203,13 @@ body {
 			.contact-form-active {
 				display: flex;
 				justify-content: center;
-				align-items: center;
+				// align-items: center;
 				font-size: 2.2rem;
-			}
 
-			// TODO
-			// ustawic checkboxa tak zeby byl w jednej linii z reszta
+				.form-input:nth-child(2) {
+					margin-bottom: 60px;
+				}
+			}
 		}
 
 		.buttons {
@@ -395,7 +397,16 @@ body {
 
 @media (max-width: 744px) {
 	.main {
+		.question-name-box {
+			margin-bottom: 20px;
+
+			&__h1 {
+				font-size: 2.4rem;
+			}
+		}
+
 		.wrapper {
+			height: 70%;
 			.questions-box {
 				.section {
 					height: auto;
@@ -415,6 +426,51 @@ body {
 					padding-left: 0;
 					align-items: center;
 				}
+
+				.text-area {
+					height: 200px;
+					&::placeholder {
+						font-size: 1.4rem;
+					}
+				}
+
+				.contact-form {
+					label {
+						font-weight: 500;
+					}
+
+					.left-form {
+						margin-right: 0;
+
+						.name-label {
+							margin-top: 40px;
+						}
+					}
+
+					.right-form {
+						margin-left: 0;
+					}
+
+					.form-input {
+						&::placeholder {
+							font-size: 1.4rem;
+						}
+					}
+				}
+
+				.contact-form-active {
+					flex-direction: column;
+					align-items: flex-start;
+					font-size: 1.4rem;
+
+					.form-input {
+						margin-bottom: 45px;
+					}
+
+					.form-section {
+						align-items: flex-start;
+					}
+				}
 			}
 
 			.buttons {
@@ -426,8 +482,18 @@ body {
 					font-size: 1.2rem;
 				}
 
-				&__prev{
+				&__prev {
 					margin-left: 10%;
+					border-width: 1px;
+				}
+
+				&__next {
+					margin-right: 10%;
+					border-width: 1px;
+				}
+
+				&__send {
+					margin-right: 10%;
 					border-width: 1px;
 				}
 			}

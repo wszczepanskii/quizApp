@@ -131,6 +131,7 @@ body {
   padding-left: 15px;
   padding-top: 15px;
   resize: none;
+  border-radius: 5px;
   font-size: 2rem;
 }
 .main .wrapper .questions-box .text-area::-moz-placeholder {
@@ -148,7 +149,6 @@ body {
   display: flex;
   flex-direction: column;
   margin-left: 27px;
-  margin-bottom: 98px;
 }
 .main .wrapper .questions-box .contact-form .left-form {
   display: flex;
@@ -160,7 +160,7 @@ body {
   margin-top: 70px;
 }
 .main .wrapper .questions-box .contact-form .left-form .rules-active {
-  display: inline-block;
+  display: none;
 }
 .main .wrapper .questions-box .contact-form .form-input {
   width: 100%;
@@ -183,8 +183,10 @@ body {
 .main .wrapper .questions-box .contact-form-active {
   display: flex;
   justify-content: center;
-  align-items: center;
   font-size: 2.2rem;
+}
+.main .wrapper .questions-box .contact-form-active .form-input:nth-child(2) {
+  margin-bottom: 60px;
 }
 .main .wrapper .buttons {
   display: flex;
@@ -349,6 +351,15 @@ body {
   }
 }
 @media (max-width: 744px) {
+  .main .question-name-box {
+    margin-bottom: 20px;
+  }
+  .main .question-name-box__h1 {
+    font-size: 2.4rem;
+  }
+  .main .wrapper {
+    height: 70%;
+  }
   .main .wrapper .questions-box .section {
     height: auto;
   }
@@ -365,6 +376,44 @@ body {
     padding-left: 0;
     align-items: center;
   }
+  .main .wrapper .questions-box .text-area {
+    height: 200px;
+  }
+  .main .wrapper .questions-box .text-area::-moz-placeholder {
+    font-size: 1.4rem;
+  }
+  .main .wrapper .questions-box .text-area::placeholder {
+    font-size: 1.4rem;
+  }
+  .main .wrapper .questions-box .contact-form label {
+    font-weight: 500;
+  }
+  .main .wrapper .questions-box .contact-form .left-form {
+    margin-right: 0;
+  }
+  .main .wrapper .questions-box .contact-form .left-form .name-label {
+    margin-top: 40px;
+  }
+  .main .wrapper .questions-box .contact-form .right-form {
+    margin-left: 0;
+  }
+  .main .wrapper .questions-box .contact-form .form-input::-moz-placeholder {
+    font-size: 1.4rem;
+  }
+  .main .wrapper .questions-box .contact-form .form-input::placeholder {
+    font-size: 1.4rem;
+  }
+  .main .wrapper .questions-box .contact-form-active {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 1.4rem;
+  }
+  .main .wrapper .questions-box .contact-form-active .form-input {
+    margin-bottom: 45px;
+  }
+  .main .wrapper .questions-box .contact-form-active .form-section {
+    align-items: flex-start;
+  }
   .main .wrapper .buttons {
     bottom: 30px;
   }
@@ -375,6 +424,14 @@ body {
   }
   .main .wrapper .buttons__prev {
     margin-left: 10%;
+    border-width: 1px;
+  }
+  .main .wrapper .buttons__next {
+    margin-right: 10%;
+    border-width: 1px;
+  }
+  .main .wrapper .buttons__send {
+    margin-right: 10%;
     border-width: 1px;
   }
 }/*# sourceMappingURL=style.css.map */
