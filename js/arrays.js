@@ -14,6 +14,22 @@ const startQuestion = [
 	},
 ];
 
+const mobileFirstQuestion = [
+	{
+		question: "Jaki projekt chcesz stworzyć?",
+		answers: [
+			{ text: "Aplikacja mobilna" },
+			{ text: "Modelowanie 3D" },
+			{ text: "Aplikacja VR" },
+			{ text: "Web" },
+			{ text: "Aplikacja AR" },
+			{ text: "Jeszcze nie wiem" },
+			{ text: "Gra" },
+			{ text: "Inny" },
+		],
+	},
+];
+
 const questionsMobile = [
 	{
 		empty: "",
@@ -768,4 +784,5 @@ export {
 	questionsVR,
 	questionsWeb,
 	startQuestion,
+	mobileFirstQuestion,
 };
