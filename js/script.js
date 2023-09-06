@@ -12,22 +12,33 @@ import {
 } from "./arrays.js";
 
 const startBtn = document.querySelector(".start-btn");
+
 const questionsBox = document.querySelector(".questions-box");
 const questionNameBox = document.querySelector(".question-name-box");
 const questionName = document.querySelector(".question-name-box__h1");
 const questionNameOptions = document.querySelector(
 	".question-name-box__options"
 );
+
 const contactForm = document.querySelector(".contact-form");
 const rules = document.querySelector(".rules");
+
 const quizEnd = document.querySelector(".quiz-end");
 const quizEndBtn = document.querySelector(".quiz-end__box-buttons--back");
+
 const progressBarQ = document.querySelector(".progress-bar__questions-r");
 const progressBar = document.querySelector(".progress-bar__questions");
 const progressBarBlock = document.querySelector(".progress-bar");
 const progressBarDone = document.querySelector(".progress-bar-done");
 const rocket = document.querySelector(".progress-bar-done--svg");
+
 // const callendar = document.querySelector(".calendar-box");
+const toolTipBox = document.querySelector(".tooltip-box");
+const closeToolTipBtn = document.querySelector(".tooltip-box__header-close");
+const toolTipName = document.querySelector(".tooltip-box__header-text");
+const toolTipContent = document.querySelector(".tooltip-box__body-text");
+
+let toolTipBtn;
 
 const buttonsBox = document.querySelector(".buttons");
 const stateBtns = document.querySelectorAll(".state-btn");
@@ -73,6 +84,10 @@ let remainingQuestions,
 	progressWidth = 0,
 	tmp = 0;
 
+let tooltipBtns = [],
+	isToolTip = false,
+	currentQuestionName = "";
+
 const handleStart = () => {
 	questionsBox.classList.add("fade-out-anim");
 	isStart = true;
@@ -96,7 +111,7 @@ const removeContent = () => {
 	textArea.remove();
 };
 
-const handleTooltip = (idx) => {
+const handleTooltip = (idx, name) => {
 	const toolTip = document.createElement("span");
 	const toolTipText = document.createElement("span");
 
@@ -107,25 +122,32 @@ const handleTooltip = (idx) => {
 	questionName.append(toolTip);
 	toolTip.append(toolTipText);
 
+	let text = "";
+
 	if (mobile) {
 		switch (idx) {
 			case 4:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Zależy nam na zrozumieniu głównego celu. Poznanie go pomoże nam lepiej dostosować rozwiązania do potrzeb i oczekiwań.";
 				break;
 			case 5:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Niezależnie od głównego celu aplikacji, może zostać wzbogacona o dodatkowe aspekty.";
 				break;
 			case 7:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Otrzymane materiały pomogą nam stworzyć produkt spójny ze stylem marki i zaczerpnąć inspiracji. Usprawnią one także prace nad projektem.";
 				break;
 			case 8:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Chcemy jak najlepiej dostosować harmonogram projektu, uwzględniając Twoje priorytety i terminy dostarczenia aplikacji. Dzięki temu będziemy mogli pracować efektywnie i dostarczyć gotowy produkt zgodnie z Twoimi oczekiwaniami.";
 				break;
 			case 9:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Informacje o dostępnym budżecie, pomogą nam dostosować nasze rozwiązania i rekomendacje do Twoich wymagań. Naszym celem jest znalezienie najbardziej efektywnego i wartościowego rozwiązania, które odpowiada Twoim potrzebom i oczekiwaniom.";
 				break;
@@ -134,23 +156,39 @@ const handleTooltip = (idx) => {
 		}
 	} else if (ar) {
 		switch (idx) {
+			// case 1:
+
+			// 	tooltipBtns[0].append(toolTip);
+			// 	toolTipText.textContent =
+			// 		"Stworzenie dedykowanej aplikacji dla produktów lub usługi zawieraja więcej elementów takich jak na przykład:";
+
+			// 	tooltipBtns[1].append(toolTip);
+			// 	toolTipText.textContent =
+			// 		"Stworzona na konkretne wydarzenia, święta czy okoliczności. Głównie charakteryzuje się:";
+
+			// 	break;
 			case 5:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Zależy nam na zrozumieniu głównego celu. Poznanie go pomoże nam lepiej dostosować rozwiązania do potrzeb i oczekiwań.";
 				break;
 			case 6:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Niezależnie od głównego celu aplikacji, może zostać wzbogacona o dodatkowe aspekty.";
 				break;
 			case 8:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Otrzymane materiały pomogą nam stworzyć produkt spójny ze stylem marki i zaczerpnąć inspiracji. Usprawnią one także prace nad projektem.";
 				break;
 			case 9:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Chcemy jak najlepiej dostosować harmonogram projektu, uwzględniając Twoje priorytety i terminy dostarczenia aplikacji. Dzięki temu będziemy mogli pracować efektywnie i dostarczyć gotowy produkt zgodnie z Twoimi oczekiwaniami.";
 				break;
 			case 10:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Informacje o dostępnym budżecie, pomogą nam dostosować nasze rozwiązania i rekomendacje do Twoich wymagań. Naszym celem jest znalezienie najbardziej efektywnego i wartościowego rozwiązania, które odpowiada Twoim potrzebom i oczekiwaniom.";
 				break;
@@ -160,22 +198,27 @@ const handleTooltip = (idx) => {
 	} else if (vr) {
 		switch (idx) {
 			case 5:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Zależy nam na zrozumieniu głównego celu. Poznanie go pomoże nam lepiej dostosować rozwiązania do potrzeb i oczekiwań.";
 				break;
 			case 6:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Niezależnie od głównego celu aplikacji, może zostać wzbogacona o dodatkowe aspekty.";
 				break;
 			case 8:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Otrzymane materiały pomogą nam stworzyć produkt spójny ze stylem marki i zaczerpnąć inspiracji. Usprawnią one także prace nad projektem.";
 				break;
 			case 10:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Chcemy jak najlepiej dostosować harmonogram projektu, uwzględniając Twoje priorytety i terminy dostarczenia aplikacji. Dzięki temu będziemy mogli pracować efektywnie i dostarczyć gotowy produkt zgodnie z Twoimi oczekiwaniami.";
 				break;
 			case 11:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Informacje o dostępnym budżecie, pomogą nam dostosować nasze rozwiązania i rekomendacje do Twoich wymagań. Naszym celem jest znalezienie najbardziej efektywnego i wartościowego rozwiązania, które odpowiada Twoim potrzebom i oczekiwaniom.";
 				break;
@@ -185,22 +228,27 @@ const handleTooltip = (idx) => {
 	} else if (game) {
 		switch (idx) {
 			case 6:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Zależy nam na zrozumieniu głównego celu. Poznanie go pomoże nam lepiej dostosować rozwiązania do potrzeb i oczekiwań.";
 				break;
 			case 7:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Niezależnie od głównego celu aplikacji, może zostać wzbogacona o dodatkowe aspekty.";
 				break;
 			case 9:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Otrzymane materiały pomogą nam stworzyć produkt spójny ze stylem marki i zaczerpnąć inspiracji. Usprawnią one także prace nad projektem.";
 				break;
 			case 10:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Chcemy jak najlepiej dostosować harmonogram projektu, uwzględniając Twoje priorytety i terminy dostarczenia aplikacji. Dzięki temu będziemy mogli pracować efektywnie i dostarczyć gotowy produkt zgodnie z Twoimi oczekiwaniami.";
 				break;
 			case 11:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Informacje o dostępnym budżecie, pomogą nam dostosować nasze rozwiązania i rekomendacje do Twoich wymagań. Naszym celem jest znalezienie najbardziej efektywnego i wartościowego rozwiązania, które odpowiada Twoim potrzebom i oczekiwaniom.";
 				break;
@@ -210,26 +258,32 @@ const handleTooltip = (idx) => {
 	} else if (model3D) {
 		switch (idx) {
 			case 1:
+				isToolTip = true;
 				toolTipText.textContent =
 					"W przypadku większej ilości modeli, istnieje możliwość wykorzystania wspólnych lub podobnych elementów, które zostały stworzone dla wcześniejszych modeli. To pozwoli na efektywne wykorzystanie zasobów i skrócenie czasu potrzebnego na tworzenie kolejnych modeli.";
 				break;
 			case 2:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Otrzymane materiały pomogą stworzyć model zgodny z oczekiwaniami a także usprawnią  prace.";
 				break;
 			case 3:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Każdy model w zależności od zastosowania musi zostać odpowiednio przygotowany i dostosowany. Wyjaśnienie, do czego będą używane modele, pozwoli nam zaprojektować je w taki sposób, aby najlepiej służyły zamierzonym celom.";
 				break;
 			case 4:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Modele mogą zostać wzbogacone o animacje, które pokażą sposób działania, zwiększą atrakcyjność wizualną oraz wyróżnią się na tle konkurencji. Jeśli chcesz dodać animacje w modelach, prosimy o określenie co jest dla Ciebie istotne, oraz o jakie efekty czy ruchy chciałbyś, aby zostały zaimplementowane. Podanie tych informacji pomoże nam odpowiednio przygotować i zaplanować proces tworzenia modeli 3D.";
 				break;
 			case 7:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Chcemy jak najlepiej dostosować harmonogram projektu, uwzględniając Twoje priorytety i terminy dostarczenia aplikacji. Dzięki temu będziemy mogli pracować efektywnie i dostarczyć gotowy produkt zgodnie z Twoimi oczekiwaniami.";
 				break;
 			case 8:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Informacje o dostępnym budżecie, pomogą nam dostosować nasze rozwiązania i rekomendacje do Twoich wymagań. Naszym celem jest znalezienie najbardziej efektywnego i wartościowego rozwiązania, które odpowiada Twoim potrzebom i oczekiwaniom.";
 				break;
@@ -239,22 +293,27 @@ const handleTooltip = (idx) => {
 	} else if (idk) {
 		switch (idx) {
 			case 1:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Pomożemy, doradzimy w doborze rozwiązania, które idealnie sprawdzi się w danym projekcie.";
 				break;
 			case 2:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Zależy nam na zrozumieniu głównego celu. Poznanie go pomoże nam lepiej dostosować rozwiązania do potrzeb i oczekiwań.";
 				break;
 			case 4:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Niezależnie od głównego celu aplikacji, może zostać wzbogacona o dodatkowe aspekty.";
 				break;
 			case 5:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Chcemy jak najlepiej dostosować harmonogram projektu, uwzględniając Twoje priorytety i terminy dostarczenia aplikacji. Dzięki temu będziemy mogli pracować efektywnie i dostarczyć gotowy produkt zgodnie z Twoimi oczekiwaniami.";
 				break;
 			case 6:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Informacje o dostępnym budżecie, pomogą nam dostosować nasze rozwiązania i rekomendacje do Twoich wymagań. Naszym celem jest znalezienie najbardziej efektywnego i wartościowego rozwiązania, które odpowiada Twoim potrzebom i oczekiwaniom.";
 				break;
@@ -264,22 +323,27 @@ const handleTooltip = (idx) => {
 	} else if (web) {
 		switch (idx) {
 			case 2:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Zależy nam na zrozumieniu głównego celu. Poznanie go pomoże nam lepiej dostosować rozwiązania do potrzeb i oczekiwań.";
 				break;
 			case 6:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Niezależnie od głównego celu strony, może zostać wzbogacona o dodatkowe aspekty.";
 				break;
 			case 8:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Otrzymane materiały pomogą nam stworzyć produkt spójny ze stylem marki i zaczerpnąć inspiracji. Usprawnią one także prace nad projektem.";
 				break;
 			case 9:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Chcemy jak najlepiej dostosować harmonogram projektu, uwzględniając Twoje priorytety i terminy dostarczenia aplikacji. Dzięki temu będziemy mogli pracować efektywnie i dostarczyć gotowy produkt zgodnie z Twoimi oczekiwaniami.";
 				break;
 			case 10:
+				isToolTip = true;
 				toolTipText.textContent =
 					"Informacje o dostępnym budżecie, pomogą nam dostosować nasze rozwiązania i rekomendacje do Twoich wymagań. Naszym celem jest znalezienie najbardziej efektywnego i wartościowego rozwiązania, które odpowiada Twoim potrzebom i oczekiwaniom.";
 				break;
@@ -287,13 +351,31 @@ const handleTooltip = (idx) => {
 				toolTip.style.display = "none";
 		}
 	}
+
+	text = toolTipText.textContent;
+
+	if (isToolTip) {
+		console.log("daup");
+		console.log(name);
+		toolTipName.textContent = name;
+		toolTipContent.textContent = text;
+	}
+
+	toolTipBtn = document.querySelector(".tooltip");
+
+	toolTipBtn.addEventListener("click", () => {
+		toolTipBox.classList.add("tooltip-active");
+	});
+
+	isToolTip = false;
 };
 
 const createMobile = (idx) => {
 	questionName.textContent = questionsMobile[idx].question;
+	currentQuestionName = questionsMobile[idx].question;
 	questionNameBox.style.display = "block";
 
-	handleTooltip(idx);
+	handleTooltip(idx, currentQuestionName);
 
 	for (let i = 0; i < questionsMobile[idx].answers.length; i++) {
 		const questionBtn = document.createElement("button");
@@ -334,9 +416,10 @@ const createMobile = (idx) => {
 
 const createVR = (idx) => {
 	questionName.textContent = questionsVR[idx].question;
+	currentQuestionName = questionsVR[idx].question;
 	questionNameBox.style.display = "block";
 
-	handleTooltip(idx);
+	handleTooltip(idx, currentQuestionName);
 
 	for (let i = 0; i < questionsVR[idx].answers.length; i++) {
 		const questionBtn = document.createElement("button");
@@ -352,28 +435,39 @@ const createVR = (idx) => {
 
 const createAR = (idx) => {
 	questionName.textContent = questionsAR[idx].question;
+	currentQuestionName = questionsAR[idx].question;
 	questionNameBox.style.display = "block";
 
-	handleTooltip(idx);
+	tooltipBtns = [];
 
 	for (let i = 0; i < questionsAR[idx].answers.length; i++) {
 		const questionBtn = document.createElement("button");
 
 		questionBtn.classList.add("answer-btn", "hover");
 		questionBtn.textContent = questionsAR[idx].answers[i].text;
+
+		if (idx === 1) {
+			tooltipBtns.push(questionBtn);
+
+			console.log(tooltipBtns);
+		}
+
 		if (i % 2 === 0) {
 			leftSection.append(questionBtn);
 		} else {
 			rightSection.append(questionBtn);
 		}
 	}
+
+	handleTooltip(idx, currentQuestionName);
 };
 
 const createGame = (idx) => {
 	questionName.textContent = questionsGame[idx].question;
+	currentQuestionName = questionsGame[idx].question;
 	questionNameBox.style.display = "block";
 
-	handleTooltip(idx);
+	handleTooltip(idx, currentQuestionName);
 
 	for (let i = 0; i < questionsGame[idx].answers.length; i++) {
 		const questionBtn = document.createElement("button");
@@ -390,9 +484,10 @@ const createGame = (idx) => {
 
 const createModel3D = (idx) => {
 	questionName.textContent = questions3D[idx].question;
+	currentQuestionName = questions3D[idx].question;
 	questionNameBox.style.display = "block";
 
-	handleTooltip(idx);
+	handleTooltip(idx, currentQuestionName);
 
 	for (let i = 0; i < questions3D[idx].answers.length; i++) {
 		const questionBtn = document.createElement("button");
@@ -409,9 +504,10 @@ const createModel3D = (idx) => {
 
 const createWeb = (idx) => {
 	questionName.textContent = questionsWeb[idx].question;
+	currentQuestionName = questionsWeb[idx].question;
 	questionNameBox.style.display = "block";
 
-	handleTooltip(idx);
+	handleTooltip(idx, currentQuestionName);
 
 	for (let i = 0; i < questionsWeb[idx].answers.length; i++) {
 		const questionBtn = document.createElement("button");
@@ -428,9 +524,10 @@ const createWeb = (idx) => {
 
 const createIdk = (idx) => {
 	questionName.textContent = questionsIdk[idx].question;
+	currentQuestionName = questionsIdk[idx].question;
 	questionNameBox.style.display = "block";
 
-	handleTooltip(idx);
+	handleTooltip(idx, currentQuestionName);
 
 	for (let i = 0; i < questionsIdk[idx].answers.length; i++) {
 		const questionBtn = document.createElement("button");
@@ -838,6 +935,15 @@ const showEndScreen = () => {
 	quizEnd.style.display = "flex";
 };
 
+const closeTooltip = () => {
+	toolTipBox.classList.add("tooltip-close");
+	toolTipBox.classList.remove("tooltip-active");
+
+	toolTipBox.addEventListener("animationend", () => {
+		toolTipBox.classList.remove("tooltip-close");
+	});
+};
+
 window.onload = () => {
 	if (window.innerWidth >= 375 && window.innerWidth <= 744) {
 		tempFirstArr = mobileFirstQuestion;
@@ -924,6 +1030,7 @@ prevBtn.addEventListener("click", () => {
 skipBtn.addEventListener("click", showForm);
 quizEndBtn.addEventListener("click", handleEnd);
 sendBtn.addEventListener("click", showEndScreen);
+closeToolTipBtn.addEventListener("click", closeTooltip);
 // meetBtn.addEventListener("click", () => {
 // 	buttonsBox.style.display = "none";
 // 	quizEnd.style.display = "none";
