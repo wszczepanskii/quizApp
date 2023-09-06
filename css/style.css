@@ -15,6 +15,7 @@ body {
   font-family: "Montserrat", sans-serif;
   font-size: 1.6rem;
   overflow-x: hidden;
+  overflow-y: hidden;
   background-color: white;
 }
 
@@ -109,7 +110,7 @@ body {
   width: 100%;
   margin-bottom: 36px;
   padding: 12px 0;
-  max-width: 65%;
+  max-width: 80%;
   font-size: 2rem;
   border: 2px solid #55585f;
   border-radius: 5px;
@@ -247,7 +248,7 @@ body {
   cursor: pointer;
 }
 .main .wrapper .buttons__next {
-  margin-right: 10%;
+  margin-right: 16%;
   border: 2px solid #23a0df;
   background-color: #23a0df;
   color: white;
@@ -262,7 +263,7 @@ body {
   color: #666666;
 }
 .main .wrapper .buttons__prev {
-  margin-left: 10%;
+  margin-left: 16%;
   background-color: white;
   border: 2px solid #55585f;
   color: #55585f;
@@ -323,7 +324,6 @@ body {
 .quiz-end__box-prize {
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
   width: 100%;
   margin-top: 75px;
 }
@@ -349,9 +349,6 @@ body {
   display: none;
 }
 .quiz-end__box-buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: absolute;
   bottom: 110px;
   width: 100%;
@@ -467,7 +464,7 @@ body {
     align-items: flex-start;
   }
   .main .wrapper .buttons {
-    bottom: 30px;
+    bottom: 70px;
   }
   .main .wrapper .buttons .state-btn {
     padding: 7px 25px;
@@ -486,9 +483,17 @@ body {
     margin-right: 10%;
     border-width: 1px;
   }
+  .main .wrapper .buttons__skip {
+    margin-right: 10%;
+    border-width: 1px;
+  }
   .main .progress-bar {
     top: 50px;
     width: 70%;
+  }
+  .main .progress-bar-done--svg {
+    top: -13px;
+    width: 60px;
   }
   .quiz-end__box-title--h1 {
     font-size: 2.4rem;
@@ -530,7 +535,37 @@ body {
   }
 }
 @media (min-width: 744px) and (max-width: 1024px) {
+  .main .wrapper {
+    width: 100%;
+  }
   .main .wrapper .questions-box .section .answer-btn {
-    max-width: 65%;
+    max-width: 82%;
+  }
+  .main .wrapper .buttons__prev {
+    margin-left: 10%;
+  }
+  .main .wrapper .buttons__next {
+    margin-right: 10%;
+  }
+  .main .wrapper .buttons__skip {
+    margin-right: 10%;
+  }
+  .main .wrapper .buttons__send {
+    margin-right: 10%;
+  }
+  .quiz-end__box-prize {
+    align-items: stretch;
+  }
+  .quiz-end__box-prize-img--mobile {
+    display: block;
+  }
+  .quiz-end__box-prize-img--pc {
+    display: none;
+  }
+  .quiz-end__box-prize .end-box {
+    width: 50%;
+  }
+  .quiz-end__box-prize-ar {
+    margin-left: 40px;
   }
 }/*# sourceMappingURL=style.css.map */

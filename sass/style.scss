@@ -18,6 +18,7 @@ body {
 	font-family: "Montserrat", sans-serif;
 	font-size: 1.6rem;
 	overflow-x: hidden;
+	overflow-y: hidden;
 	background-color: white;
 }
 
@@ -118,7 +119,7 @@ body {
 					width: 100%;
 					margin-bottom: 36px;
 					padding: 12px 0;
-					max-width: 65%;
+					max-width: 80%;
 					font-size: 2rem;
 					border: 2px solid c.$vsh-darkgrey;
 					border-radius: 5px;
@@ -279,7 +280,7 @@ body {
 			}
 
 			&__next {
-				margin-right: 10%;
+				margin-right: 16%;
 				border: 2px solid c.$vsh-blue;
 				background-color: c.$vsh-blue;
 				color: white;
@@ -297,7 +298,7 @@ body {
 			}
 
 			&__prev {
-				margin-left: 10%;
+				margin-left: 16%;
 				background-color: white;
 				border: 2px solid c.$vsh-darkgrey;
 				color: c.$vsh-darkgrey;
@@ -364,7 +365,7 @@ body {
 		&-prize {
 			display: flex;
 			justify-content: space-evenly;
-			align-items: center;
+			// align-items: center;
 			width: 100%;
 			margin-top: 75px;
 
@@ -395,9 +396,6 @@ body {
 		}
 
 		&-buttons {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
 			position: absolute;
 			bottom: 110px;
 			width: 100%;
@@ -457,6 +455,8 @@ body {
 		opacity: 1;
 	}
 }
+
+// MOBILE
 
 @media (max-width: 744px) {
 	.main {
@@ -546,7 +546,7 @@ body {
 			}
 
 			.buttons {
-				bottom: 30px;
+				bottom: 70px;
 
 				.state-btn {
 					padding: 7px 25px;
@@ -568,12 +568,24 @@ body {
 					margin-right: 10%;
 					border-width: 1px;
 				}
+
+				&__skip {
+					margin-right: 10%;
+					border-width: 1px;
+				}
 			}
 		}
 
-		.progress-bar{
+		.progress-bar {
 			top: 50px;
 			width: 70%;
+
+			&-done {
+				&--svg {
+					top: -13px;
+					width: 60px;
+				}
+			}
 		}
 	}
 
@@ -632,21 +644,62 @@ body {
 	}
 }
 
+// TABLET
+
 @media (min-width: 744px) and (max-width: 1024px) {
 	.main {
 		.wrapper {
+			width: 100%;
+
 			.questions-box {
 				.section {
 					.answer-btn {
-						max-width: 65%;
+						max-width: 82%;
 					}
 				}
 			}
 
-			// .buttons {
-			// 	&__prev {
-			// 	}
-			// }
+			.buttons {
+				&__prev {
+					margin-left: 10%;
+				}
+
+				&__next {
+					margin-right: 10%;
+				}
+
+				&__skip {
+					margin-right: 10%;
+				}
+
+				&__send {
+					margin-right: 10%;
+				}
+			}
+		}
+	}
+
+	.quiz-end {
+		&__box {
+			&-prize {
+				align-items: stretch;
+
+				&-img--mobile {
+					display: block;
+				}
+
+				&-img--pc {
+					display: none;
+				}
+
+				.end-box{
+					width: 50%;
+				}
+
+				&-ar{
+					margin-left: 40px;
+				}
+			}
 		}
 	}
 }
