@@ -22,12 +22,20 @@ const contactForm = document.querySelector(".contact-form");
 const rules = document.querySelector(".rules");
 const quizEnd = document.querySelector(".quiz-end");
 const quizEndBtn = document.querySelector(".quiz-end__box-buttons--back");
+const progressBarQ = document.querySelector(".progress-bar__questions-r");
+const progressBar = document.querySelector(".progress-bar__questions");
+const progressBarBlock = document.querySelector(".progress-bar");
+const progressBarDone = document.querySelector(".progress-bar-done");
+const rocket = document.querySelector(".progress-bar-done--svg");
+// const callendar = document.querySelector(".calendar-box");
 
+const buttonsBox = document.querySelector(".buttons");
 const stateBtns = document.querySelectorAll(".state-btn");
 const nextBtn = document.querySelector(".buttons__next");
 const prevBtn = document.querySelector(".buttons__prev");
 const skipBtn = document.querySelector(".buttons__skip");
 const sendBtn = document.querySelector(".buttons__send");
+const meetBtn = document.querySelector(".quiz-end__box-prize-meet");
 
 let answerBtns, answerArr;
 
@@ -56,10 +64,18 @@ let mobile = false,
 let flagVR = false,
 	flagMobile = false;
 
+let isStart = false,
+	prevClicked = false;
+
 let tempFirstArr = [];
+
+let remainingQuestions,
+	progressWidth = 0,
+	tmp = 0;
 
 const handleStart = () => {
 	questionsBox.classList.add("fade-out-anim");
+	isStart = true;
 };
 
 const removeContent = () => {
@@ -97,6 +113,19 @@ const createMobile = (idx) => {
 			rightSection.append(questionBtn);
 		}
 
+		if (questionBtn.textContent === "Android") {
+			const iconSpan = document.createElement("span");
+			iconSpan.classList.add("material-symbols-outlined");
+			iconSpan.textContent = "android";
+			questionBtn.append(iconSpan);
+		}
+		// else if(questionBtn.textContent === "iOS") {
+		// 	const iconSpan = document.createElement("span");
+		// 	iconSpan.classList.add("material-symbols-outlined");
+		// 	iconSpan.textContent = "apple";
+		// 	questionBtn.append(iconSpan);
+		// }
+
 		// questionBtn.setAttribute("data-number", i);
 
 		// questionBtn.append(checkMark);
@@ -109,10 +138,6 @@ const createVR = (idx) => {
 	questionNameBox.style.display = "block";
 	for (let i = 0; i < questionsVR[idx].answers.length; i++) {
 		const questionBtn = document.createElement("button");
-		// const checkMark = document.createElement("i");
-
-		// questionBtn.innerHTML = `<i class="fa-solid fa-check" style="position: relative; left: 25px; margin-right: auto;"></i> <span>${questionsMobile[idx].answers[i].text}</span>`;
-
 		questionBtn.classList.add("answer-btn", "hover");
 		questionBtn.textContent = questionsVR[idx].answers[i].text;
 		if (i % 2 === 0) {
@@ -120,11 +145,6 @@ const createVR = (idx) => {
 		} else {
 			rightSection.append(questionBtn);
 		}
-
-		// questionBtn.setAttribute("data-number", i);
-
-		// questionBtn.append(checkMark);
-		// checkMark.classList.add("fa-solid", "fa-check");
 	}
 };
 
@@ -278,6 +298,7 @@ const showHelp = () => {
 const checkAnswer = () => {
 	if (flagVR) {
 		currentQuestionIndex = 2;
+		remainingQuestions = 12;
 	} else if (flagMobile) {
 		userAnswerGame = true;
 	}
@@ -286,10 +307,12 @@ const checkAnswer = () => {
 		console.log("mobile");
 		userAnswerGame = false;
 		currentQuestionIndex = 3;
+		remainingQuestions = 11;
 	}
 };
 
 const nextQuestion = () => {
+	prevClicked = false;
 	checkAnswer();
 
 	if (currentQuestionIndex < qeustionLength - 1) {
@@ -298,9 +321,45 @@ const nextQuestion = () => {
 	} else {
 		// currentQuestionIndex = qeustionLength + 1;
 		showTextInput();
-		questionsBox.style.flexDirection = "column";
-		questionsBox.style.justifyContent = "space-between";
+		// questionsBox.style.flexDirection = "column";
+		// questionsBox.style.justifyContent = "space-between";
 	}
+};
+
+const handleProgressBar = () => {
+	progressBarBlock.style.display = "block";
+
+	tmp = 100 / (qeustionLength + 1);
+
+	if (!prevClicked) {
+		remainingQuestions--;
+		progressBarQ.textContent = remainingQuestions;
+
+		progressWidth += tmp;
+	} else {
+		remainingQuestions++;
+		progressBarQ.textContent = remainingQuestions;
+		prevClicked = false;
+
+		progressWidth -= tmp;
+	}
+
+	progressWidth = Math.round((progressWidth + Number.EPSILON) * 100) / 100;
+
+	if (remainingQuestions === 0) {
+		progressWidth = 100;
+	}
+
+	progressBarDone.style.width = `${progressWidth}%`;
+
+	// let progressBarWidth;
+
+	// setTimeout(() => {
+	// 	progressBarWidth = document.querySelector(".progress-bar-done").clientWidth;
+	// }, 300);
+
+	// console.log(progressBarWidth + "width");
+	// rocket.style.left = `${progressBarWidth - 42.5}px`;
 };
 
 const showQuestion = (idx) => {
@@ -322,17 +381,16 @@ const showQuestion = (idx) => {
 	questionsBox.append(leftSection, rightSection);
 	questionsBox.style.display = "flex";
 
-	if (window.innerWidth >= 390 && window.innerWidth < 1024) {
+	if (window.innerWidth <= 744) {
 		questionsBox.style.flexDirection = "column";
-		tempFirstArr = mobileFirstQuestion;
 	} else {
-		tempFirstArr = startQuestion;
 		questionsBox.style.flexDirection = "row";
 	}
 	questionsBox.style.justifyContent = "center";
 
 	// only on start
 	if (currentQuestionIndex === 0) {
+		progressBarBlock.style.display = "none";
 		questionName.textContent = tempFirstArr[0].question;
 		questionNameBox.style.display = "block";
 		for (let i = 0; i < tempFirstArr[0].answers.length; i++) {
@@ -349,29 +407,31 @@ const showQuestion = (idx) => {
 				rightSection.append(questionBtn);
 			}
 		}
+
+		progressWidth = 0;
 	}
 
 	if (currentQuestionIndex !== 0) {
 		if (mobile) {
-			qeustionLength = questionsMobile.length;
+			// qeustionLength = questionsMobile.length;
 			createMobile(idx);
 		} else if (vr) {
-			qeustionLength = questionsVR.length;
+			// qeustionLength = questionsVR.length;
 			createVR(idx);
 		} else if (ar) {
-			qeustionLength = questionsAR.length;
+			// qeustionLength = questionsAR.length;
 			createAR(idx);
 		} else if (game) {
-			qeustionLength = questionsGame.length;
+			// qeustionLength = questionsGame.length;
 			createGame(idx);
 		} else if (model3D) {
-			qeustionLength = questions3D.length;
+			// qeustionLength = questions3D.length;
 			createModel3D(idx);
 		} else if (web) {
-			qeustionLength = questionsWeb.length;
+			// qeustionLength = questionsWeb.length;
 			createWeb(idx);
 		} else if (idk) {
-			qeustionLength = questionsIdk.length;
+			// qeustionLength = questionsIdk.length;
 			createIdk(idx);
 		}
 	}
@@ -441,6 +501,8 @@ const showQuestion = (idx) => {
 						idk = true;
 						break;
 				}
+
+				remainingQuestions = qeustionLength + 1;
 			}
 
 			// console.log(answerArr[btn.getAttribute("data-number")].textContent);
@@ -497,9 +559,15 @@ const showQuestion = (idx) => {
 			btn.classList.remove("hover");
 		}
 	});
+
+	if (currentQuestionIndex === 0) return;
+	
+	handleProgressBar();
 };
 
 const showTextInput = () => {
+	handleProgressBar();
+
 	removeContent();
 	currentQuestionIndex = qeustionLength;
 	skipBtn.style.display = "block";
@@ -515,9 +583,12 @@ const showTextInput = () => {
 	textArea.setAttribute("maxlength", 250);
 	textArea.setAttribute("placeholder", "Aplikacja ma być...");
 	textArea.classList.add("text-area");
+	questionsBox.style.justifyContent = "center";
 };
 
 const showForm = () => {
+	handleProgressBar();
+
 	removeContent();
 	currentQuestionIndex = qeustionLength + 1;
 	sendBtn.style.display = "block";
@@ -537,8 +608,31 @@ const handleEnd = () => {
 };
 
 const showEndScreen = () => {
+	progressBar.style.display = "none";
 	quizEnd.style.display = "flex";
 };
+
+window.onload = () => {
+	if (window.innerWidth >= 375 && window.innerWidth <= 744) {
+		tempFirstArr = mobileFirstQuestion;
+	} else {
+		tempFirstArr = startQuestion;
+	}
+};
+
+window.addEventListener("resize", () => {
+	if (!isStart) {
+		return;
+	}
+
+	if (window.innerWidth <= 744) {
+		questionsBox.style.flexDirection = "column";
+		tempFirstArr = mobileFirstQuestion;
+	} else {
+		tempFirstArr = startQuestion;
+		questionsBox.style.flexDirection = "row";
+	}
+});
 
 startBtn.addEventListener("click", handleStart);
 
@@ -572,6 +666,12 @@ nextBtn.addEventListener("click", () => {
 });
 
 prevBtn.addEventListener("click", () => {
+	if (currentQuestionIndex > 0) {
+		prevClicked = true;
+	} else {
+		prevClicked = false;
+	}
+
 	contactForm.classList.remove("contact-form-active");
 	rules.classList.remove("rules-active");
 
@@ -594,12 +694,8 @@ prevBtn.addEventListener("click", () => {
 skipBtn.addEventListener("click", showForm);
 quizEndBtn.addEventListener("click", handleEnd);
 sendBtn.addEventListener("click", showEndScreen);
-// window.addEventListener("beforeunload", (e) => {
-// 	e.preventDefault();
-// 	const message = "POjebalo cie?";
-
-// 	e.returnValue = message;
-
-// 	dupa.style.display = "block";
-// 	return dupa;
+// meetBtn.addEventListener("click", () => {
+// 	buttonsBox.style.display = "none";
+// 	quizEnd.style.display = "none";
+// 	callendar.style.display = "block";
 // });
