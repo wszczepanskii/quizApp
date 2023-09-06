@@ -114,6 +114,7 @@ body {
   border: 2px solid #55585f;
   border-radius: 5px;
   background-color: #fff;
+  color: #000;
   cursor: pointer;
 }
 .main .wrapper .questions-box .section .answer-btn i {
@@ -484,6 +485,10 @@ body {
   .main .wrapper .buttons__send {
     margin-right: 10%;
     border-width: 1px;
+  }
+  .main .progress-bar {
+    top: 50px;
+    width: 70%;
   }
   .quiz-end__box-title--h1 {
     font-size: 2.4rem;

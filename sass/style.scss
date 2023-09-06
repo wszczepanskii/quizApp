@@ -123,6 +123,7 @@ body {
 					border: 2px solid c.$vsh-darkgrey;
 					border-radius: 5px;
 					background-color: #fff;
+					color: #000;
 					cursor: pointer;
 
 					i {
@@ -568,6 +569,11 @@ body {
 					border-width: 1px;
 				}
 			}
+		}
+
+		.progress-bar{
+			top: 50px;
+			width: 70%;
 		}
 	}
 
