@@ -383,6 +383,9 @@ const showQuestion = (idx) => {
 
 	if (window.innerWidth <= 744) {
 		questionsBox.style.flexDirection = "column";
+		if (textAreaActive) {
+			questionsBox.style.display = "block";
+		}
 	} else {
 		questionsBox.style.flexDirection = "row";
 	}
@@ -561,7 +564,7 @@ const showQuestion = (idx) => {
 	});
 
 	if (currentQuestionIndex === 0) return;
-	
+
 	handleProgressBar();
 };
 
@@ -584,6 +587,12 @@ const showTextInput = () => {
 	textArea.setAttribute("placeholder", "Aplikacja ma być...");
 	textArea.classList.add("text-area");
 	questionsBox.style.justifyContent = "center";
+
+	if (window.innerWidth <= 744) {
+		questionsBox.style.display = "block";
+	} else {
+		questionsBox.style.display = "flex";
+	}
 };
 
 const showForm = () => {
@@ -628,9 +637,13 @@ window.addEventListener("resize", () => {
 	if (window.innerWidth <= 744) {
 		questionsBox.style.flexDirection = "column";
 		tempFirstArr = mobileFirstQuestion;
+		if (textAreaActive) {
+			questionsBox.style.display = "block";
+		}
 	} else {
 		tempFirstArr = startQuestion;
 		questionsBox.style.flexDirection = "row";
+		questionsBox.style.display = "flex";
 	}
 });
 
