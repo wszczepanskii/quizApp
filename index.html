@@ -12,6 +12,11 @@
 			rel="stylesheet"
 		/>
 
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+		/>
+
 		<title>Quiz App</title>
 
 		<link rel="stylesheet" href="./css/style.css" />
@@ -20,7 +25,16 @@
 		<main class="main">
 			<div class="wrapper">
 				<div class="progress-bar">
-					<p class="questions-r">pozostało 13 pytań</p>
+					<div class="progress-bar-done">
+						<img
+							class="progress-bar-done--svg"
+							src="animations/rakieta.svg"
+							alt=""
+						/>
+					</div>
+					<p class="progress-bar__questions">
+						pozostało <span class="progress-bar__questions-r">13</span> pytań
+					</p>
 				</div>
 				<div class="question-name-box">
 					<h1 class="question-name-box__h1">Jaki projekt chcesz stworzyć?</h1>
@@ -30,7 +44,7 @@
 				</div>
 				<div class="questions-box">
 					<h1 class="start-h1">Pomoc w wyborze aplikacji</h1>
-					<button class="start-btn">Rozpocznij quiz</button>
+					<button class="start-btn">Zaczynamy</button>
 					<form class="contact-form">
 						<div class="left-form form-section">
 							<label for="name" class="name-label">Imię i nazwisko</label>
@@ -48,9 +62,9 @@
 								id="tel"
 								placeholder="+48 000 000 000"
 							/>
-							<div class="rules">
-								<input type="checkbox" id="rules-checkbox" />
-								<label for="rules-checkbox"
+							<div class="rules rules-left">
+								<input type="checkbox" id="rules-checkbox-left" />
+								<label for="rules-checkbox-left"
 									>Wyrażam zgodę na <a href="#">regulamin</a></label
 								>
 							</div>
@@ -71,6 +85,12 @@
 								id="comp-name"
 								placeholder="Moja firma"
 							/>
+							<div class="rules rules-right">
+								<input type="checkbox" id="rules-checkbox-right" />
+								<label for="rules-checkbox-right"
+									>Wyrażam zgodę na <a href="#">regulamin</a></label
+								>
+							</div>
 						</div>
 					</form>
 				</div>
@@ -98,13 +118,28 @@
 							Darmowa konsultacja 15/30 minut
 						</p>
 						<img
+							class="quiz-end__box-prize-img--pc"
 							src="img/partnership.png"
+							alt="Dwójka ludzi przybijających piątkę"
+						/>
+						<img
+							class="quiz-end__box-prize-img--mobile"
+							src="img/partnership_mobile.png"
 							alt="Dwójka ludzi przybijających piątkę"
 						/>
 					</button>
 					<button class="quiz-end__box-prize-ar end-box">
 						<p class="quiz-end__box-prize-text">Prezent w AR</p>
-						<img src="img/AR_4.png" alt="Telefon" />
+						<img
+							class="quiz-end__box-prize-img--pc"
+							src="img/AR_4.png"
+							alt="Telefon"
+						/>
+						<img
+							class="quiz-end__box-prize-img--mobile"
+							src="img/AR_4_mobile.png"
+							alt="Telefon"
+						/>
 					</button>
 				</div>
 				<div class="quiz-end__box-buttons">
@@ -112,6 +147,19 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- <div class="calendar-box">
+			<div
+				class="calendly-inline-widget"
+				data-url="https://calendly.com/wiktorsz2001/test"
+				style="min-width: 320px; height: 700px"
+			></div>
+			<script
+				type="text/javascript"
+				src="https://assets.calendly.com/assets/external/widget.js"
+				async
+			></script>
+		</div> -->
 
 		<script src="./js/script.js" type="module"></script>
 	</body>
