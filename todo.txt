@@ -1,5 +1,11 @@
-1. progessbar
-2. zachecacze
-3. checkmarki
-4. responsywnosc
-5. animacje podczas przechodzenia do kolejnego pytania
+2. checkmarki
+3. animacje podczas przechodzenia do kolejnego pytania
+4. tooltipy w pytaniach
+
+5. ??? Przejście z naszej strony vhsoft do quizu. Chcemy umieścić informację o quizie i przekierowanie nad headerem. Kliknięcie linku “Rozpocznij quiz” przenosi nas na początek quizu.
+
+6. Wybór na koniec quizu nagrody - bezpłatnej konsultacji albo prezentu w AR. Tutaj prośba o sprawdzenie możliwości wykorzystania np. Calendly pod bookowanie określonego terminu i godziny. Chcielibyśmy, żeby działało to tak, że my określamy parę terminów (dat i godzin), kiedy nam pasuje, a osoba przechodząca quiz zaznacza jeden spośród kilku możliwych.
+
+7. Przycisk info, który ma pokazywać dodatkowe informacje do wybranych pytań lub odpowiedzi. W przypadku info dołączonych do odpowiedzi, zróbmy przycisk info jako część przycisku odpowiedzi. Na Desktopie po najechaniu wyświetla się tooltip, a na mobilce po naciśnięciu info pojawia się nowy widok z wytłumaczeniem. W przypadku dodatkowych informacji dołączonych do pytań, przy pytaniu znajduje się ikona info. Zarówno na Desktopie jak i na mobilce.
+
+8. Alert, który ma się pokazywać przy odświeżaniu strony w trakcie wykonywania quizu
