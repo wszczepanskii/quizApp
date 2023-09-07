@@ -774,6 +774,188 @@ const encourageArr = [
 	"Uwzględniając wszystkie odpowiedzi to będzie innowacyjny projekt przyciągający uwagę!",
 ];
 
+const toolTipArr = [
+	{
+		mobile: [
+			//mobile
+			{
+				text:
+					"Zależy nam na zrozumieniu głównego celu. Poznanie go pomoże nam lepiej dostosować rozwiązania do potrzeb i oczekiwań.",
+			},
+			{
+				text:
+					"Niezależnie od głównego celu aplikacji, może zostać wzbogacona o dodatkowe aspekty.",
+			},
+			{
+				text:
+					"Otrzymane materiały pomogą nam stworzyć produkt spójny ze stylem marki i zaczerpnąć inspiracji. Usprawnią one także prace nad projektem.",
+			},
+			{
+				text:
+					"Chcemy jak najlepiej dostosować harmonogram projektu, uwzględniając Twoje priorytety i terminy dostarczenia aplikacji. Dzięki temu będziemy mogli pracować efektywnie i dostarczyć gotowy produkt zgodnie z Twoimi oczekiwaniami.",
+			},
+			{
+				text:
+					"Informacje o dostępnym budżecie, pomogą nam dostosować nasze rozwiązania i rekomendacje do Twoich wymagań. Naszym celem jest znalezienie najbardziej efektywnego i wartościowego rozwiązania, które odpowiada Twoim potrzebom i oczekiwaniom.",
+			},
+		],
+	},
+	{
+		ar: [
+			//ar
+			{
+				text:
+					"Zależy nam na zrozumieniu głównego celu. Poznanie go pomoże nam lepiej dostosować rozwiązania do potrzeb i oczekiwań.",
+			},
+			{
+				text:
+					"Niezależnie od głównego celu aplikacji, może zostać wzbogacona o dodatkowe aspekty.",
+			},
+			{
+				text:
+					"Otrzymane materiały pomogą nam stworzyć produkt spójny ze stylem marki i zaczerpnąć inspiracji. Usprawnią one także prace nad projektem.",
+			},
+			{
+				text:
+					"Chcemy jak najlepiej dostosować harmonogram projektu, uwzględniając Twoje priorytety i terminy dostarczenia aplikacji. Dzięki temu będziemy mogli pracować efektywnie i dostarczyć gotowy produkt zgodnie z Twoimi oczekiwaniami.",
+			},
+			{
+				text:
+					"Informacje o dostępnym budżecie, pomogą nam dostosować nasze rozwiązania i rekomendacje do Twoich wymagań. Naszym celem jest znalezienie najbardziej efektywnego i wartościowego rozwiązania, które odpowiada Twoim potrzebom i oczekiwaniom.",
+			},
+		],
+	},
+	{
+		vr: [
+			//vr
+			{
+				text:
+					"Zależy nam na zrozumieniu głównego celu. Poznanie go pomoże nam lepiej dostosować rozwiązania do potrzeb i oczekiwań.",
+			},
+			{
+				text:
+					"Niezależnie od głównego celu aplikacji, może zostać wzbogacona o dodatkowe aspekty.",
+			},
+			{
+				text:
+					"Otrzymane materiały pomogą nam stworzyć produkt spójny ze stylem marki i zaczerpnąć inspiracji. Usprawnią one także prace nad projektem.",
+			},
+			{
+				text:
+					"Chcemy jak najlepiej dostosować harmonogram projektu, uwzględniając Twoje priorytety i terminy dostarczenia aplikacji. Dzięki temu będziemy mogli pracować efektywnie i dostarczyć gotowy produkt zgodnie z Twoimi oczekiwaniami.",
+			},
+			{
+				text:
+					"Informacje o dostępnym budżecie, pomogą nam dostosować nasze rozwiązania i rekomendacje do Twoich wymagań. Naszym celem jest znalezienie najbardziej efektywnego i wartościowego rozwiązania, które odpowiada Twoim potrzebom i oczekiwaniom.",
+			},
+		],
+	},
+	{
+		game: [
+			//game
+			{
+				text:
+					"Zależy nam na zrozumieniu głównego celu. Poznanie go pomoże nam lepiej dostosować rozwiązania do potrzeb i oczekiwań.",
+			},
+			{
+				text:
+					"Niezależnie od głównego celu aplikacji, może zostać wzbogacona o dodatkowe aspekty.",
+			},
+			{
+				text:
+					"Otrzymane materiały pomogą nam stworzyć produkt spójny ze stylem marki i zaczerpnąć inspiracji. Usprawnią one także prace nad projektem.",
+			},
+			{
+				text:
+					"Chcemy jak najlepiej dostosować harmonogram projektu, uwzględniając Twoje priorytety i terminy dostarczenia aplikacji. Dzięki temu będziemy mogli pracować efektywnie i dostarczyć gotowy produkt zgodnie z Twoimi oczekiwaniami.",
+			},
+			{
+				text:
+					"Informacje o dostępnym budżecie, pomogą nam dostosować nasze rozwiązania i rekomendacje do Twoich wymagań. Naszym celem jest znalezienie najbardziej efektywnego i wartościowego rozwiązania, które odpowiada Twoim potrzebom i oczekiwaniom.",
+			},
+		],
+	},
+	{
+		model3d: [
+			//model3d
+			{
+				text:
+					"W przypadku większej ilości modeli, istnieje możliwość wykorzystania wspólnych lub podobnych elementów, które zostały stworzone dla wcześniejszych modeli. To pozwoli na efektywne wykorzystanie zasobów i skrócenie czasu potrzebnego na tworzenie kolejnych modeli.",
+			},
+			{
+				text:
+					"Otrzymane materiały pomogą stworzyć model zgodny z oczekiwaniami a także usprawnią  prace.",
+			},
+			{
+				text:
+					"Każdy model w zależności od zastosowania musi zostać odpowiednio przygotowany i dostosowany. Wyjaśnienie, do czego będą używane modele, pozwoli nam zaprojektować je w taki sposób, aby najlepiej służyły zamierzonym celom.",
+			},
+			{
+				text:
+					"Modele mogą zostać wzbogacone o animacje, które pokażą sposób działania, zwiększą atrakcyjność wizualną oraz wyróżnią się na tle konkurencji. Jeśli chcesz dodać animacje w modelach, prosimy o określenie co jest dla Ciebie istotne, oraz o jakie efekty czy ruchy chciałbyś, aby zostały zaimplementowane. Podanie tych informacji pomoże nam odpowiednio przygotować i zaplanować proces tworzenia modeli 3D.",
+			},
+			{
+				text:
+					"Chcemy jak najlepiej dostosować harmonogram projektu, uwzględniając Twoje priorytety i terminy dostarczenia aplikacji. Dzięki temu będziemy mogli pracować efektywnie i dostarczyć gotowy produkt zgodnie z Twoimi oczekiwaniami.",
+			},
+			{
+				text:
+					"Informacje o dostępnym budżecie, pomogą nam dostosować nasze rozwiązania i rekomendacje do Twoich wymagań. Naszym celem jest znalezienie najbardziej efektywnego i wartościowego rozwiązania, które odpowiada Twoim potrzebom i oczekiwaniom.",
+			},
+		],
+	},
+	{
+		idk: [
+			//idk
+			{
+				text:
+					"Pomożemy, doradzimy w doborze rozwiązania, które idealnie sprawdzi się w danym projekcie.",
+			},
+			{
+				text:
+					"Zależy nam na zrozumieniu głównego celu. Poznanie go pomoże nam lepiej dostosować rozwiązania do potrzeb i oczekiwań.",
+			},
+			{
+				text:
+					"Niezależnie od głównego celu aplikacji, może zostać wzbogacona o dodatkowe aspekty.",
+			},
+			{
+				text:
+					"Chcemy jak najlepiej dostosować harmonogram projektu, uwzględniając Twoje priorytety i terminy dostarczenia aplikacji. Dzięki temu będziemy mogli pracować efektywnie i dostarczyć gotowy produkt zgodnie z Twoimi oczekiwaniami.",
+			},
+			{
+				text:
+					"Informacje o dostępnym budżecie, pomogą nam dostosować nasze rozwiązania i rekomendacje do Twoich wymagań. Naszym celem jest znalezienie najbardziej efektywnego i wartościowego rozwiązania, które odpowiada Twoim potrzebom i oczekiwaniom.",
+			},
+		],
+	},
+	{
+		web: [
+			//web
+			{
+				text:
+					"Zależy nam na zrozumieniu głównego celu. Poznanie go pomoże nam lepiej dostosować rozwiązania do potrzeb i oczekiwań.",
+			},
+			{
+				text:
+					"Niezależnie od głównego celu strony, może zostać wzbogacona o dodatkowe aspekty.",
+			},
+			{
+				text:
+					"Otrzymane materiały pomogą nam stworzyć produkt spójny ze stylem marki i zaczerpnąć inspiracji. Usprawnią one także prace nad projektem.",
+			},
+			{
+				text:
+					"Chcemy jak najlepiej dostosować harmonogram projektu, uwzględniając Twoje priorytety i terminy dostarczenia aplikacji. Dzięki temu będziemy mogli pracować efektywnie i dostarczyć gotowy produkt zgodnie z Twoimi oczekiwaniami.",
+			},
+			{
+				text:
+					"Informacje o dostępnym budżecie, pomogą nam dostosować nasze rozwiązania i rekomendacje do Twoich wymagań. Naszym celem jest znalezienie najbardziej efektywnego i wartościowego rozwiązania, które odpowiada Twoim potrzebom i oczekiwaniom.",
+			},
+		],
+	},
+];
+
 export {
 	questionsMobile,
 	encourageArr,
@@ -785,4 +967,5 @@ export {
 	questionsWeb,
 	startQuestion,
 	mobileFirstQuestion,
+	toolTipArr,
 };
