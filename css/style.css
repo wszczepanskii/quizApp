@@ -47,6 +47,7 @@ body {
   right: 0;
   margin-left: 12px;
   font-size: 30px;
+  font-size: 2.4rem;
 }
 .main .question-name-box__h1 .tooltip__text {
   all: initial;
@@ -141,7 +142,7 @@ body {
 }
 .main .wrapper .questions-box .section {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   width: 100%;
   height: 100%;
@@ -169,7 +170,7 @@ body {
   right: 0;
   margin-left: 12px;
   font-size: 30px;
-  font-size: 24px;
+  font-size: 2.4rem;
 }
 .main .wrapper .questions-box .section .answer-btn .tooltip__text {
   all: initial;
@@ -395,11 +396,11 @@ body {
   text-align: center;
 }
 .quiz-end__box-title--h1 {
-  font-size: 36px;
+  font-size: 3.6rem;
   margin-bottom: 20px;
 }
 .quiz-end__box-title--p {
-  font-size: 24px;
+  font-size: 2.4rem;
 }
 .quiz-end__box-prize {
   display: flex;
@@ -422,7 +423,7 @@ body {
   cursor: pointer;
 }
 .quiz-end__box-prize-text {
-  font-size: 20px;
+  font-size: 2rem;
   margin-bottom: 29px;
 }
 .quiz-end__box-prize-img--mobile {
@@ -471,7 +472,7 @@ body {
   justify-content: space-between;
 }
 .loading-box__wrapper-h1 {
-  font-size: 36px;
+  font-size: 3.6rem;
 }
 
 .slide-in-anim {
@@ -656,7 +657,7 @@ body {
   }
   .tooltip-box__header-text {
     padding-left: 18px;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: bold;
   }
   .tooltip-box__header-close {
@@ -673,7 +674,7 @@ body {
     width: 100%;
     margin-top: 32px;
     margin-left: 24px;
-    font-size: 14px;
+    font-size: 1.4rem;
     font-weight: 500;
   }
   .tooltip-active {
@@ -683,7 +684,7 @@ body {
     animation: closeToolTip 0.4s forwards;
   }
   .loading-box__wrapper-h1 {
-    font-size: 24px;
+    font-size: 2.4rem;
   }
 }
 @media (max-width: 375px) {
