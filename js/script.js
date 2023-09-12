@@ -153,15 +153,31 @@ const handleTooltip = (idx, name) => {
 	} else if (ar) {
 		switch (idx) {
 			// case 1:
+			// 	const toolTipBtn1 = document.createElement("span");
+			// 	const toolTipBtn2 = document.createElement("span");
+			// 	const toolTipBtnText1 = document.createElement("span");
+			// 	const toolTipBtnText2 = document.createElement("span");
 
-			// 	tooltipBtns[0].append(toolTip);
-			// 	toolTipText.textContent =
+			// 	toolTipBtnText1.classList.add("tooltip__text");
+			// 	toolTipBtnText2.classList.add("tooltip__text");
+			// 	toolTipBtn1.classList.add("material-symbols-outlined", "tooltip");
+			// 	toolTipBtn2.classList.add("material-symbols-outlined", "tooltip");
+
+			// 	toolTipBtn1.textContent = "info";
+			// 	toolTipBtn2.textContent = "info";
+
+			// 	toolTipBtn1.append(toolTipBtnText1);
+			// 	toolTipBtn2.append(toolTipBtnText2);
+
+			// 	tooltipBtns[0].append(toolTipBtn1);
+			// 	toolTipBtnText1.textContent =
 			// 		"Stworzenie dedykowanej aplikacji dla produktów lub usługi zawieraja więcej elementów takich jak na przykład:";
 
-			// 	tooltipBtns[1].append(toolTip);
-			// 	toolTipText.textContent =
+			// 	tooltipBtns[1].append(toolTipBtn2);
+			// 	toolTipBtnText2.textContent =
 			// 		"Stworzona na konkretne wydarzenia, święta czy okoliczności. Głównie charakteryzuje się:";
 
+			// 	toolTip.style.display = "none";
 			// 	break;
 			case 5:
 				toolTipText.textContent = toolTipArr[1].ar[0].text;
@@ -267,19 +283,19 @@ const handleTooltip = (idx, name) => {
 	} else if (web) {
 		switch (idx) {
 			case 2:
-				toolTipText.textContent = toolTipArr[5].web[0].text;
+				toolTipText.textContent = toolTipArr[6].web[0].text;
 				break;
 			case 6:
-				toolTipText.textContent = toolTipArr[5].web[1].text;
+				toolTipText.textContent = toolTipArr[6].web[1].text;
 				break;
 			case 8:
-				toolTipText.textContent = toolTipArr[5].web[2].text;
+				toolTipText.textContent = toolTipArr[6].web[2].text;
 				break;
 			case 9:
-				toolTipText.textContent = toolTipArr[5].web[3].text;
+				toolTipText.textContent = toolTipArr[6].web[3].text;
 				break;
 			case 10:
-				toolTipText.textContent = toolTipArr[5].web[4].text;
+				toolTipText.textContent = toolTipArr[6].web[4].text;
 				break;
 			default:
 				toolTip.style.display = "none";
@@ -814,13 +830,12 @@ const showQuestion = (idx) => {
 	}
 
 	// idx = Math.floor(Math.random() * 3);
-	
+
 	while (_idx === oldIdx) {
 		_idx = Math.floor(Math.random() * 3);
 	}
-	
-	oldIdx = _idx;
 
+	oldIdx = _idx;
 
 	// if (_idx === oldIdx) {
 	// 	oldIdx = idx;
